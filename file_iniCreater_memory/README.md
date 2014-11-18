@@ -1,8 +1,8 @@
 file_iniCreater
 ===============
 
-Une solution en faisant de lire au début toutes les contenues du fichier dans un HashTable, et 
-après traiter les données dans le mémoire, à la fin écrire dans le fichier
+Une solution en faisant de lire au début toutes les contenues du fichier dans un HashTable, et après traiter les données dans le mémoire, à la fin écrire dans le fichier
+
 ----------------------------
 
 Visual Studio 2010
