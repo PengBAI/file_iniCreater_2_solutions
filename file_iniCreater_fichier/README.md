@@ -1,8 +1,8 @@
 file_iniCreater
 ===============
 
-Une solution en faisant de lire chaque ligne du fichier et décider si la traiter ou pas, et écrire la ligne dans un fichier temporaire.
-Même façon pour toutes les lignes
+Une solution en faisant de lire chaque ligne du fichier et décider si la traiter ou pas, et écrire la ligne dans un fichier temporaire. Même façon pour toutes les lignes.
+
 ----------------------------
 
 Visual Studio 2010
