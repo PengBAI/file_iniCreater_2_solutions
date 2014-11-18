@@ -1,0 +1,5 @@
+C:\Users\Administrateur\Desktop\file_iniCreater_fichier\file_iniCreater\bin\Debug\file_iniCreater.exe
+C:\Users\Administrateur\Desktop\file_iniCreater_fichier\file_iniCreater\bin\Debug\file_iniCreater.pdb
+C:\Users\Administrateur\Desktop\file_iniCreater_fichier\file_iniCreater\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrateur\Desktop\file_iniCreater_fichier\file_iniCreater\obj\x86\Debug\file_iniCreater.exe
+C:\Users\Administrateur\Desktop\file_iniCreater_fichier\file_iniCreater\obj\x86\Debug\file_iniCreater.pdb
