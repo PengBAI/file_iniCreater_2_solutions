@@ -153,6 +153,7 @@ namespace TPnet
 			string Line = "";
 			bool SectionFound = false;
 			bool NameFound = false;
+
 			// créer un fichier temporaire
 			using (StreamWriter Sw = new StreamWriter("tmp.ini", false))
 				{
@@ -160,12 +161,7 @@ namespace TPnet
 					{
 					while ((Line = Sr.ReadLine()) != null)
 						{
-						/* section trouvé et Name nontrvoué, l'ajouter dans la section */
-						if (!NameFound && SectionFound)
-							{
-							Sw.WriteLine(Name + "=" + Value);
-							NameFound = true;
-							}
+
 						/* la partie commentaire */
 						if (Line.TrimStart().StartsWith(";"))
 							{
@@ -175,6 +171,14 @@ namespace TPnet
 						/* La partie section */
 						if (Line.TrimStart().StartsWith("["))
 							{
+							/* Section trouvé et Name nontrvoué, l'ajouter dans la section */
+							if (!NameFound && SectionFound)
+								{
+								Sw.WriteLine(Name + "=" + Value);
+								Console.Out.WriteLine(Name + "=" + Value + ": a été ajouté dans la section [" + Section + "]!");
+								NameFound = true;
+								}
+							/* trouver la Section */
 							if (Line.StartsWith("[" + Section + "]"))
 								{
 								SectionFound = true;
@@ -195,6 +199,7 @@ namespace TPnet
 									if (tmpName.TrimStart().Equals(Name.TrimStart()))
 										{
 										Sw.WriteLine(Name + "=" + Value);
+										Console.Out.WriteLine(Name + "=" + Value + ": a été ajouté dans la section [" + Section + "]!");
 										/* dans la sectuon Name trouvé et modifié */
 										NameFound = true;
 										}
@@ -204,7 +209,9 @@ namespace TPnet
 										Sw.WriteLine(Line);
 										}
 									}
-								}else{
+								}
+							else
+								{
 								Sw.WriteLine(Line);
 								}
 							}
@@ -213,17 +220,21 @@ namespace TPnet
 					if (!SectionFound)
 						{
 						Sw.WriteLine("[" + Section.TrimStart() + "]");
+						Console.Out.WriteLine("[" +Section + "]" + ": a été ajouté!");
 						Sw.WriteLine(Name.TrimStart() + "=" + Value.Trim());
+						Console.Out.WriteLine(Name + "=" + Value + ": a été ajouté dans la section [" + Section + "]!");
 						}
 					/* pour la dernière section */
 					/* section trouvé et Name nontrvoué, l'ajouter dans la section */
 					if (SectionFound && !NameFound)
 						{
 						Sw.WriteLine(Name + "=" + Value);
+						Console.Out.WriteLine(Name + "=" + Value + ": a été ajouté dans la section [" + Section + "]!");
 						}
 					}
 				}
 			}
+
 		/// <summary>
 		/// écrire un Interger dans le fichier
 		/// </summary>
@@ -265,8 +276,10 @@ namespace TPnet
 							if (Line.StartsWith("[" + Section + "]"))
 								{
 								IsSection = true;
+								Console.Out.WriteLine(Line + " : a été supprimé!");
 								}
-								else{
+							else
+								{
 								IsSection = false;
 								Sw.WriteLine(Line);
 								}
@@ -277,6 +290,7 @@ namespace TPnet
 							if (IsSection)
 								{
 								/* écrire riens*/
+								Console.Out.WriteLine(Line + " : a été supprimé!");
 								}
 							else
 								{
@@ -286,7 +300,8 @@ namespace TPnet
 						}
 					}
 				}
-		}
+			}
+
 		/// <summary>
 		/// supprimer le Name=Value dans une Section
 		/// </summary>
@@ -335,6 +350,7 @@ namespace TPnet
 									/* Name dans la Section trouvé */
 									if (tmpName.TrimStart().Equals(Name.TrimStart()))
 										{/* écrire riens*/
+										Console.Out.WriteLine(Line +": a été supprimé dans la Section [" + Section + "]!");
 										}
 									else
 										{

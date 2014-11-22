@@ -26,22 +26,19 @@ namespace TPnet
 							Console.Out.WriteLine(Line);
 						}
 					}
-					//sr.Close(); // close fichier
-					//sr.Dispose(); // free resources
 				}else{
 					Console.Out.WriteLine("Fichier non trouvé: " + Args[0]);
 				}
 
 				Console.Out.WriteLine(IniFile.GetString(Args[0], "MCI  Extensions.BAK", "mp4"));
-				//IniFile.Write(Args[0], "Mail", "linshen", "good");
-				//IniFile.RemoveName(Args[0], "Mail", "MAPI");
-				IniFile.RemoveSection(Args[0], "Mail");
-				
 				
 				// modifications du fichier
-				if(Args.Length >= 4){
+				if(Args.Length <= 4){
 					try{
-						IniFile.Write(Args[0], Args[1], Args[2], Args[3]);
+						IniFile.Write(Args[0], "fonts", "baipeng ", 12254);
+						IniFile.RemoveSection(Args[0], "MCI Extensions.BAK");
+						IniFile.Write(Args[0], "MCI Extensions.BAK", "mp4", 4444444444444);
+						IniFile.RemoveName(Args[0], "MCI Extensions.BAK", "mp4");
 					}
 					catch(ArgumentException Err)
 					{
