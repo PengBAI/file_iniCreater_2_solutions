@@ -10,10 +10,7 @@ namespace Mercure
 		static void Main(string[] Args)
 			{
 				Core MyCore = new Core();
-				MyCore.ReadFichierXLS(Args[0]);
-
-
-
+				MyCore.XLS2BdD(Args[0]);
 				Console.In.ReadLine();
 			}
 		}
