@@ -17,14 +17,43 @@ namespace Mercure
 		private string NOM_EXCEL_TABLE = "Matériels";
 		private string PATH_DATABASE = "Data Source = 'C:/Users/Administrateur/Desktop/Mercure/Mercure/Mercure.sdf'";
 
-		// constructeur
+		/// <summary>
+		/// quand on instancie un objet Core, les tables dans BdD Mercure.sdf sont vidées 
+		/// </summary>
 		public Core()
 			{
-
+			ViderBdD();
 			}
 
+		/// <summary>
+		/// Vider la base de données s'il est déja remplit
+		/// </summary>
+		private void ViderBdD()
+			{
+			using (SqlCeConnection conn = new SqlCeConnection(@PATH_DATABASE))
+				{
+				Console.Out.WriteLine("--------------------- Vider la base de donnée Mercure: ---------------------");
+				conn.Open();
+				SqlCeCommand Cmd = new SqlCeCommand(null, conn);
+				Cmd.CommandText = "DELETE FROM Articles;";
+				Console.Out.WriteLine(Cmd.ExecuteNonQuery() + " lignes sont supprimée dans la table Articles.");
+				Cmd.CommandText = "DELETE FROM Marques;";
+				Console.Out.WriteLine(Cmd.ExecuteNonQuery() + " lignes sont supprimée dans la table Marques.");
+				Cmd.CommandText = "DELETE FROM Familles;";
+				Console.Out.WriteLine(Cmd.ExecuteNonQuery() + " lignes sont supprimée dans la table Familles.");
+				Cmd.CommandText = "DELETE FROM SousFamilles;";
+				Console.Out.WriteLine(Cmd.ExecuteNonQuery() + " lignes sont supprimée dans la table SousFamilles.");
+				Console.Out.WriteLine("--------------------------- Vider Mercure réussi ---------------------------");
+				}
+			}
+
+		/// <summary>
+		/// lire le lignes dans EXCEL et les insérer dans Mercure.sdf
+		/// </summary>
+		/// <param name="FilePath"> répertoire du fichier EXCEL</param>
 		public void XLS2BdD(string FilePath)
 			{
+
 			// initialiser une connexion Excel
 			string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + FilePath + ";Extended Properties=\"Excel 8.0\";";
 			OleDbConnection connection = new OleDbConnection(connectionString);
@@ -33,16 +62,16 @@ namespace Mercure
 			// démarrer la connexion 
 			command.Connection.Open();
 			OleDbDataReader Reader = command.ExecuteReader();
-
+			Console.Out.WriteLine("--------------------- Remplir les tables dans Mercure: ---------------------");
 			if (Reader.HasRows)
 				{
 				while (Reader.Read())
 					{
 					// the ids
 					int IDmarque, IDfamille, IDsousfamille;
-					IDmarque = insertMercure(INDEX_MARQUE, Reader[INDEX_MARQUE].ToString());
-					IDfamille = insertMercure(INDEX_FAMILLE, Reader[INDEX_FAMILLE].ToString());
-					IDsousfamille = insertMercure(INDEX_SOUSFAMILLE, Reader[INDEX_SOUSFAMILLE].ToString());
+					IDmarque = InsertMercure(INDEX_MARQUE, Reader[INDEX_MARQUE].ToString());
+					IDfamille = InsertMercure(INDEX_FAMILLE, Reader[INDEX_FAMILLE].ToString());
+					IDsousfamille = InsertMercure(INDEX_SOUSFAMILLE, Reader[INDEX_SOUSFAMILLE].ToString());
 
 					if (IDmarque != -1 && IDfamille != -1 && IDsousfamille != -1)
 						{
@@ -83,8 +112,53 @@ namespace Mercure
 						}
 					}
 				}
+
+			LireResultat(); // option, si on va voir combien de lignes sont insérées dans les tables
 			// fermer la connexion
 			command.Connection.Close();
+			}
+
+		/// <summary>
+		/// lire les resultats que combien de lignes effectuées
+		/// </summary>
+		private void LireResultat()
+			{
+			int ArticleCpt = 0, FamilleCpt = 0, MarqueCpt = 0, SousFamilleCpt = 0;
+			// lire les resultats
+			using (SqlCeConnection conn = new SqlCeConnection(@PATH_DATABASE))
+				{
+				// open la connexion
+				conn.Open();
+				SqlCeCommand Cmd = new SqlCeCommand(null, conn);
+				SqlCeDataReader ReaderSql = null;
+				// nombre de lignes effectuées
+				Cmd.CommandText = "SELECT COUNT(*) AS Nbr FROM Articles;";
+				ReaderSql = Cmd.ExecuteReader();
+				ReaderSql.Read();
+				ArticleCpt = (int)ReaderSql[0];
+
+				Cmd.CommandText = "SELECT COUNT(*) AS Nbr FROM Marques;";
+				ReaderSql = Cmd.ExecuteReader();
+				ReaderSql.Read();
+				MarqueCpt = (int)ReaderSql[0];
+
+				Cmd.CommandText = "SELECT COUNT(*) AS Nbr FROM Familles;";
+				ReaderSql = Cmd.ExecuteReader();
+				ReaderSql.Read();
+				FamilleCpt = (int)ReaderSql[0];
+
+				Cmd.CommandText = "SELECT COUNT(*) AS Nbr FROM SousFamilles;";
+				ReaderSql = Cmd.ExecuteReader();
+				ReaderSql.Read();
+				SousFamilleCpt = (int)ReaderSql[0];
+
+				ReaderSql.Close();
+				}
+			Console.Out.WriteLine("--------------------- Les tables sont remplit avec réussi: ---------------------");
+			Console.Out.WriteLine(ArticleCpt + " lignes sont insérées dans table Articles.");
+			Console.Out.WriteLine(MarqueCpt + " lignes sont insérées dans table Marques.");
+			Console.Out.WriteLine(FamilleCpt + " lignes sont insérées dans table Familles.");
+			Console.Out.WriteLine(SousFamilleCpt + " lignes sont insérées dans table SousFamilles.");
 			}
 
 		/// <summary>
@@ -93,7 +167,7 @@ namespace Mercure
 		/// <param name="Index">dans quel colonne qu'on trouve attribut</param>
 		/// <param name="DataExl"> la valeur</param>
 		/// <returns>Id, concernant la valeur qui est insérée. -1, si dans autre cas</returns>
-		private int insertMercure(int Index, string DataExl)
+		private int InsertMercure(int Index, string DataExl)
 			{
 			using (SqlCeConnection conn = new SqlCeConnection(@PATH_DATABASE))
 				{
