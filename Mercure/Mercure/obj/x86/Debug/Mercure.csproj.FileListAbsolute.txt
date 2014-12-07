@@ -9,4 +9,4 @@ C:\Users\Administrateur\Desktop\Mercure\Mercure\obj\x86\Debug\Mercure.pdb
 C:\Users\Administrateur\Desktop\Mercure\Mercure\bin\Debug\Mercure.sdf
 C:\Users\Administrateur\Desktop\Mercure\Mercure\bin\Debug\Mercure.exe
 C:\Users\Administrateur\Desktop\Mercure\Mercure\bin\Debug\Mercure.pdb
-C:\Users\Administrateur\Desktop\Mercure\Mercure\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrateur\Desktop\Mercure\Mercure\obj\x86\Debug\Mercure.csprojResolveAssemblyReference.cache

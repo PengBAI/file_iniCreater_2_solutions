@@ -15,13 +15,16 @@ namespace Mercure
 		private int INDEX_FAMILLE = 3;
 		private int INDEX_SOUSFAMILLE = 4;
 		private string NOM_EXCEL_TABLE = "Matériels";
-		private string PATH_DATABASE = "Data Source = 'C:/Users/Administrateur/Desktop/Mercure/Mercure/Mercure.sdf'";
+		private string PATH_DATABASE = "Data Source = ";
 
 		/// <summary>
 		/// quand on instancie un objet Core, les tables dans BdD Mercure.sdf sont vidées 
 		/// </summary>
-		public Core()
+		/// <param name="PathDatabase">répertoire de la base de données</param>
+		public Core(string PathDatabase)
 			{
+			PATH_DATABASE += "'" +PathDatabase + "'";
+			//Console.Out.WriteLine(PATH_DATABASE);
 			ViderBdD();
 			}
 
@@ -30,11 +33,11 @@ namespace Mercure
 		/// </summary>
 		private void ViderBdD()
 			{
-			using (SqlCeConnection conn = new SqlCeConnection(@PATH_DATABASE))
+			using (SqlCeConnection Conn = new SqlCeConnection(@PATH_DATABASE))
 				{
 				Console.Out.WriteLine("--------------------- Vider la base de donnée Mercure: ---------------------");
-				conn.Open();
-				SqlCeCommand Cmd = new SqlCeCommand(null, conn);
+				Conn.Open();
+				SqlCeCommand Cmd = new SqlCeCommand(null, Conn);
 				Cmd.CommandText = "DELETE FROM Articles;";
 				Console.Out.WriteLine(Cmd.ExecuteNonQuery() + " lignes sont supprimée dans la table Articles.");
 				Cmd.CommandText = "DELETE FROM Marques;";
@@ -67,7 +70,7 @@ namespace Mercure
 				{
 				while (Reader.Read())
 					{
-					// the ids
+					// get les ids
 					int IDmarque, IDfamille, IDsousfamille;
 					IDmarque = InsertMercure(INDEX_MARQUE, Reader[INDEX_MARQUE].ToString());
 					IDfamille = InsertMercure(INDEX_FAMILLE, Reader[INDEX_FAMILLE].ToString());
@@ -153,6 +156,8 @@ namespace Mercure
 				SousFamilleCpt = (int)ReaderSql[0];
 
 				ReaderSql.Close();
+				ReaderSql.Dispose();
+				Cmd.Dispose();
 				}
 			Console.Out.WriteLine("--------------------- Les tables sont remplit avec réussi: ---------------------");
 			Console.Out.WriteLine(ArticleCpt + " lignes sont insérées dans table Articles.");
@@ -169,12 +174,12 @@ namespace Mercure
 		/// <returns>Id, concernant la valeur qui est insérée. -1, si dans autre cas</returns>
 		private int InsertMercure(int Index, string DataExl)
 			{
-			using (SqlCeConnection conn = new SqlCeConnection(@PATH_DATABASE))
+			using (SqlCeConnection Conn = new SqlCeConnection(@PATH_DATABASE))
 				{
 				// open la connexion
 				try
 					{
-					conn.Open();
+					Conn.Open();
 					}
 				catch (Exception)
 					{
@@ -182,8 +187,10 @@ namespace Mercure
 					return -1;
 					}
 				SqlCeDataReader ReaderSql = null;
-				SqlCeCommand Cmd = new SqlCeCommand(null, conn);
-				// marque
+				SqlCeCommand Cmd = new SqlCeCommand(null, Conn);
+				//////////////////////////////////////////////////////////
+				//                 insérer dans table Marques           //
+				//////////////////////////////////////////////////////////
 				if (Index == INDEX_MARQUE)
 					{
 					// tester si the marque existe déja
@@ -212,7 +219,9 @@ namespace Mercure
 							}
 						}
 					}
-				// familles
+				//////////////////////////////////////////////////////////
+				//                 insérer dans table Familles          //
+				//////////////////////////////////////////////////////////
 				if (Index == INDEX_FAMILLE)
 					{
 					// test if the famille existe déja
@@ -242,7 +251,9 @@ namespace Mercure
 							}
 						}
 					}
-				//sousfamilles
+				//////////////////////////////////////////////////////////
+				//            insérer dans table SousFmailles           //
+				//////////////////////////////////////////////////////////
 				if (Index == INDEX_SOUSFAMILLE)
 					{
 					// test if the famille existe déja

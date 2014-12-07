@@ -9,7 +9,9 @@ namespace Mercure
 		{
 		static void Main(string[] Args)
 			{
-				Core MyCore = new Core();
+			// Args[0]: répertoire du Fichier EXCEL
+			// Agrs[1]: répertoire du Fichier la base de données
+				Core MyCore = new Core(Args[1]);
 				MyCore.XLS2BdD(Args[0]);
 				Console.In.ReadLine();
 			}
