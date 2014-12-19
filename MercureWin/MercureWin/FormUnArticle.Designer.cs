@@ -41,7 +41,7 @@
 			this.BtnAjouter = new System.Windows.Forms.Button();
 			this.BtnAnnuler = new System.Windows.Forms.Button();
 			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
+			this.LabelRefArticle = new System.Windows.Forms.Label();
 			this.BtnModifier = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
@@ -57,10 +57,10 @@
 			// TxtBoxRefArticle
 			// 
 			this.TxtBoxRefArticle.Location = new System.Drawing.Point(115, 27);
+			this.TxtBoxRefArticle.MaxLength = 8;
 			this.TxtBoxRefArticle.Name = "TxtBoxRefArticle";
 			this.TxtBoxRefArticle.Size = new System.Drawing.Size(132, 20);
 			this.TxtBoxRefArticle.TabIndex = 1;
-			this.TxtBoxRefArticle.TextChanged += new System.EventHandler(this.TxtBoxRefArticle_TextChanged);
 			// 
 			// TxtBoxDescription
 			// 
@@ -157,14 +157,14 @@
 			this.label6.TabIndex = 12;
 			this.label6.Text = "Ex: 16,25";
 			// 
-			// label7
+			// LabelRefArticle
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(253, 30);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(111, 13);
-			this.label7.TabIndex = 13;
-			this.label7.Text = "8 caractères Maxmum";
+			this.LabelRefArticle.AutoSize = true;
+			this.LabelRefArticle.Location = new System.Drawing.Point(253, 30);
+			this.LabelRefArticle.Name = "LabelRefArticle";
+			this.LabelRefArticle.Size = new System.Drawing.Size(111, 13);
+			this.LabelRefArticle.TabIndex = 13;
+			this.LabelRefArticle.Text = "8 caractères Maxmum";
 			// 
 			// BtnModifier
 			// 
@@ -182,7 +182,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(689, 195);
 			this.Controls.Add(this.BtnModifier);
-			this.Controls.Add(this.label7);
+			this.Controls.Add(this.LabelRefArticle);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.BtnAnnuler);
 			this.Controls.Add(this.BtnAjouter);
@@ -197,6 +197,7 @@
 			this.Controls.Add(this.TxtBoxRefArticle);
 			this.Controls.Add(this.label1);
 			this.Name = "FormUnArticle";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "UnArticle";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -218,7 +219,7 @@
 		private System.Windows.Forms.Button BtnAjouter;
 		private System.Windows.Forms.Button BtnAnnuler;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label LabelRefArticle;
 		private System.Windows.Forms.Button BtnModifier;
 		}
 	}

@@ -43,19 +43,60 @@ namespace MercureWin
 			else
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string message = "Wrong URL! Cancel this operation?";
-				string caption = "Error Detected with URL";
-				MessageBoxButtons buttons = MessageBoxButtons.OK;
-				DialogResult result;
-
+				string Message = "URL invalide! Annuler cette opération?";
 				// Displays the MessageBox.
-				result = MessageBox.Show(message, caption, buttons);
+				MessageBox.Show(Message, "Erreur URL");
+				}
+			}
 
-				if (result == System.Windows.Forms.DialogResult.Yes)
-					{
-					// TODO
-					}
+		private void marquesToolStripMenuItem_Click(object sender, EventArgs e)
+			{
+			if (this.toolStripStatusLabelMain.Text != "")
+				{
+				FormMarques ArticlesMDIChild = new FormMarques(this.toolStripStatusLabelMain.Text);
+				ArticlesMDIChild.MdiParent = this;
+				ArticlesMDIChild.Show();
+				}
+			else
+				{
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "URL invalide! Annuler cette opération?";
+				// Displays the MessageBox.
+				MessageBox.Show(Message, "Erreur URL");
+				}
+			}
 
+		private void famillesToolStripMenuItem_Click(object sender, EventArgs e)
+			{
+			if (this.toolStripStatusLabelMain.Text != "")
+				{
+				FormFamilles ArticlesMDIChild = new FormFamilles(this.toolStripStatusLabelMain.Text);
+				ArticlesMDIChild.MdiParent = this;
+				ArticlesMDIChild.Show();
+				}
+			else
+				{
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "URL invalide! Annuler cette opération?";
+				// Displays the MessageBox.
+				MessageBox.Show(Message, "Erreur URL");
+				}
+			}
+
+		private void sousFamillesToolStripMenuItem_Click(object sender, EventArgs e)
+			{
+			if (this.toolStripStatusLabelMain.Text != "")
+				{
+				FormSousFamilles ArticlesMDIChild = new FormSousFamilles(this.toolStripStatusLabelMain.Text);
+				ArticlesMDIChild.MdiParent = this;
+				ArticlesMDIChild.Show();
+				}
+			else
+				{
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "URL invalide! Annuler cette opération?";
+				// Displays the MessageBox.
+				MessageBox.Show(Message, "Erreur URL");
 				}
 			}
 

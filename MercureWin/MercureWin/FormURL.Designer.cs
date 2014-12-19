@@ -82,7 +82,6 @@
 			this.Controls.Add(this.TxtBoxURL);
 			this.Name = "FormURL";
 			this.Text = "Edit URL";
-			this.Load += new System.EventHandler(this.FormURL_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

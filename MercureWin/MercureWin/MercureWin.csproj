@@ -62,18 +62,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum.cs" />
     <Compile Include="FormArticles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormArticles.Designer.cs">
       <DependentUpon>FormArticles.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFamilles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFamilles.Designer.cs">
+      <DependentUpon>FormFamilles.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMarques.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMarques.Designer.cs">
+      <DependentUpon>FormMarques.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSousFamilles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSousFamilles.Designer.cs">
+      <DependentUpon>FormSousFamilles.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUnArticle.cs">
       <SubType>Form</SubType>
@@ -95,8 +112,17 @@
     <EmbeddedResource Include="FormArticles.resx">
       <DependentUpon>FormArticles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFamilles.resx">
+      <DependentUpon>FormFamilles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMarques.resx">
+      <DependentUpon>FormMarques.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSousFamilles.resx">
+      <DependentUpon>FormSousFamilles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUnArticle.resx">
       <DependentUpon>FormUnArticle.cs</DependentUpon>

@@ -32,6 +32,9 @@
 			this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.articlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.marquesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.famillesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sousFamillesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStripMain = new System.Windows.Forms.StatusStrip();
 			this.toolStripStatusLabelMain = new System.Windows.Forms.ToolStripStatusLabel();
 			this.menuStripMain.SuspendLayout();
@@ -52,9 +55,12 @@
 			// 
 			this.windowsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editURLToolStripMenuItem,
-            this.articlesToolStripMenuItem});
+            this.articlesToolStripMenuItem,
+            this.marquesToolStripMenuItem,
+            this.famillesToolStripMenuItem,
+            this.sousFamillesToolStripMenuItem});
 			this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+			this.windowsToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
 			this.windowsToolStripMenuItem.Text = "Edition";
 			// 
 			// editURLToolStripMenuItem
@@ -71,6 +77,27 @@
 			this.articlesToolStripMenuItem.Text = "Articles";
 			this.articlesToolStripMenuItem.Click += new System.EventHandler(this.articlesToolStripMenuItem_Click);
 			// 
+			// marquesToolStripMenuItem
+			// 
+			this.marquesToolStripMenuItem.Name = "marquesToolStripMenuItem";
+			this.marquesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.marquesToolStripMenuItem.Text = "Marques";
+			this.marquesToolStripMenuItem.Click += new System.EventHandler(this.marquesToolStripMenuItem_Click);
+			// 
+			// famillesToolStripMenuItem
+			// 
+			this.famillesToolStripMenuItem.Name = "famillesToolStripMenuItem";
+			this.famillesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.famillesToolStripMenuItem.Text = "Familles";
+			this.famillesToolStripMenuItem.Click += new System.EventHandler(this.famillesToolStripMenuItem_Click);
+			// 
+			// sousFamillesToolStripMenuItem
+			// 
+			this.sousFamillesToolStripMenuItem.Name = "sousFamillesToolStripMenuItem";
+			this.sousFamillesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.sousFamillesToolStripMenuItem.Text = "SousFamilles";
+			this.sousFamillesToolStripMenuItem.Click += new System.EventHandler(this.sousFamillesToolStripMenuItem_Click);
+			// 
 			// statusStripMain
 			// 
 			this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -84,7 +111,7 @@
 			// toolStripStatusLabelMain
 			// 
 			this.toolStripStatusLabelMain.Name = "toolStripStatusLabelMain";
-			this.toolStripStatusLabelMain.Size = new System.Drawing.Size(139, 17);
+			this.toolStripStatusLabelMain.Size = new System.Drawing.Size(125, 17);
 			this.toolStripStatusLabelMain.Text = "toolStripStatusLabelMain";
 			// 
 			// FormMain
@@ -97,6 +124,7 @@
 			this.IsMdiContainer = true;
 			this.MainMenuStrip = this.menuStripMain;
 			this.Name = "FormMain";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Mercure Client";
 			this.Load += new System.EventHandler(this.FormMain_Load);
 			this.menuStripMain.ResumeLayout(false);
@@ -116,6 +144,9 @@
 		private System.Windows.Forms.ToolStripMenuItem articlesToolStripMenuItem;
 		private System.Windows.Forms.StatusStrip statusStripMain;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelMain;
+		private System.Windows.Forms.ToolStripMenuItem marquesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem famillesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem sousFamillesToolStripMenuItem;
 		}
 	}
 

@@ -9,3 +9,6 @@ C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.F
 C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.csprojResolveAssemblyReference.cache
 C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.csproj.GenerateResource.Cache
 C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.FormUnArticle.resources
+C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.FormMarques.resources
+C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.FormFamilles.resources
+C:\Users\Administrateur\Desktop\MercureWin\MercureWin\obj\x86\Debug\MercureWin.FormSousFamilles.resources

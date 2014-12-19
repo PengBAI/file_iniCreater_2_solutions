@@ -61,28 +61,26 @@ namespace MercureWin
 
 		private void BtnSuppArticle_Click(object sender, EventArgs e)
 			{
-			// Initializes the variables to pass to the MessageBox.Show method.
-			string message = "Supprimer " + LstViewArticles.SelectedItems.Count + " articles sélectionés ?";
-			string caption = "Attention";
-			MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-			DialogResult result;
-
-			// Displays the MessageBox.
-			result = MessageBox.Show(message, caption, buttons);
-
-			if (result == DialogResult.OK)
+			if (LstViewArticles.SelectedItems.Count != 0)
 				{
-				foreach (ListViewItem Item in LstViewArticles.SelectedItems)
-					{
-					// supprimer les articles sélectionés dans ListView
-					LstViewArticles.Items[Item.Index].Remove();
-					// supprimer les articles sélectionés dans la base de données
-					Service.DeleteArticle(Item.SubItems[0].Text);
-					}
-				// refresh ListView
-				this.Refresh();
-				}
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "Supprimer " + LstViewArticles.SelectedItems.Count + " articles sélectionés ?";
+				// Displays the MessageBox.
+				DialogResult result = MessageBox.Show(Message, "Attention", MessageBoxButtons.OKCancel);
 
+				if (result == DialogResult.OK)
+					{
+					foreach (ListViewItem Item in LstViewArticles.SelectedItems)
+						{
+						// supprimer les articles sélectionés dans ListView
+						LstViewArticles.Items[Item.Index].Remove();
+						// supprimer les articles sélectionés dans la base de données
+						Service.DeleteArticle(Item.SubItems[0].Text);
+						}
+					// refresh ListView
+					LstViewArticles.Refresh();
+					}
+				}
 			}
 
 		private void BtnAjouterArticle_Click(object sender, EventArgs e)
@@ -94,12 +92,15 @@ namespace MercureWin
 
 		private void BtnModifierArticle_Click(object sender, EventArgs e)
 			{
-			ListViewItem Item = LstViewArticles.SelectedItems[0];
-			FormUnArticle UnArticle = new FormUnArticle(LstViewArticles, Service, Item.SubItems[0].Text,
-														Item.SubItems[1].Text, Item.SubItems[5].Text, Item.SubItems[7].Text,
-														Item.SubItems[8].Text);
-			UnArticle.Text = "Modifier un Article";
-			UnArticle.Show();
+			if (LstViewArticles.SelectedItems.Count != 0)
+				{
+				ListViewItem Item = LstViewArticles.SelectedItems[0];
+				FormUnArticle UnArticle = new FormUnArticle(LstViewArticles, Service, Item.SubItems[0].Text,
+															Item.SubItems[1].Text, Item.SubItems[5].Text,
+															Item.SubItems[7].Text, Item.SubItems[8].Text);
+				UnArticle.Text = "Modifier Article réf: " + Item.SubItems[0].Text;
+				UnArticle.Show();
+				}
 			}
 		}
 	}

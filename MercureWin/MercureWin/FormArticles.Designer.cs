@@ -32,6 +32,8 @@
 			this.BtnSuppArticle = new System.Windows.Forms.Button();
 			this.BtnAjouterArticle = new System.Windows.Forms.Button();
 			this.BtnModifierArticle = new System.Windows.Forms.Button();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// LstViewArticles
@@ -44,7 +46,7 @@
 			// 
 			// BtnSuppArticle
 			// 
-			this.BtnSuppArticle.Location = new System.Drawing.Point(725, 519);
+			this.BtnSuppArticle.Location = new System.Drawing.Point(274, 13);
 			this.BtnSuppArticle.Name = "BtnSuppArticle";
 			this.BtnSuppArticle.Size = new System.Drawing.Size(87, 31);
 			this.BtnSuppArticle.TabIndex = 1;
@@ -54,7 +56,7 @@
 			// 
 			// BtnAjouterArticle
 			// 
-			this.BtnAjouterArticle.Location = new System.Drawing.Point(454, 519);
+			this.BtnAjouterArticle.Location = new System.Drawing.Point(7, 13);
 			this.BtnAjouterArticle.Name = "BtnAjouterArticle";
 			this.BtnAjouterArticle.Size = new System.Drawing.Size(87, 31);
 			this.BtnAjouterArticle.TabIndex = 2;
@@ -64,7 +66,7 @@
 			// 
 			// BtnModifierArticle
 			// 
-			this.BtnModifierArticle.Location = new System.Drawing.Point(594, 519);
+			this.BtnModifierArticle.Location = new System.Drawing.Point(141, 13);
 			this.BtnModifierArticle.Name = "BtnModifierArticle";
 			this.BtnModifierArticle.Size = new System.Drawing.Size(87, 31);
 			this.BtnModifierArticle.TabIndex = 3;
@@ -72,18 +74,28 @@
 			this.BtnModifierArticle.UseVisualStyleBackColor = true;
 			this.BtnModifierArticle.Click += new System.EventHandler(this.BtnModifierArticle_Click);
 			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.BtnAjouterArticle);
+			this.groupBox1.Controls.Add(this.BtnSuppArticle);
+			this.groupBox1.Controls.Add(this.BtnModifierArticle);
+			this.groupBox1.Location = new System.Drawing.Point(612, 506);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(370, 51);
+			this.groupBox1.TabIndex = 4;
+			this.groupBox1.TabStop = false;
+			// 
 			// FormArticles
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(994, 562);
-			this.Controls.Add(this.BtnModifierArticle);
-			this.Controls.Add(this.BtnAjouterArticle);
-			this.Controls.Add(this.BtnSuppArticle);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.LstViewArticles);
 			this.Name = "FormArticles";
 			this.Text = "Articles";
 			this.Load += new System.EventHandler(this.FormArticles_Load);
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 			}
@@ -94,5 +106,6 @@
 		private System.Windows.Forms.Button BtnSuppArticle;
 		private System.Windows.Forms.Button BtnAjouterArticle;
 		private System.Windows.Forms.Button BtnModifierArticle;
+		private System.Windows.Forms.GroupBox groupBox1;
 		}
 	}

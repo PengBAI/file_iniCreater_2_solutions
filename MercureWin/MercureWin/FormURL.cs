@@ -30,19 +30,9 @@ namespace MercureWin
 			if (!isValidURL(TxtBoxURL.Text))
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string message = "You did not enter a URL. Cancel this operation?";
-				string caption = "Error Detected in Input";
-				MessageBoxButtons buttons = MessageBoxButtons.OK;
-				DialogResult result;
-
+				string Message = "You did not enter a URL. Cancel this operation?";
 				// Displays the MessageBox.
-
-				result = MessageBox.Show(message, caption, buttons);
-
-				if (result == System.Windows.Forms.DialogResult.Yes)
-					{
-					// todo if need
-					}
+				MessageBox.Show(Message, "Error Detected in Input", MessageBoxButtons.OK);
 				}
 			else
 				{
@@ -60,11 +50,5 @@ namespace MercureWin
 			{
 			return Uri.IsWellFormedUriString(Url, UriKind.RelativeOrAbsolute);
 			}
-
-		private void FormURL_Load(object sender, EventArgs e)
-			{
-
-			}
-
 		}
 	}

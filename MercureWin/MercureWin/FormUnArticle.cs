@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Mercure;
+using System.Globalization;
 
 namespace MercureWin
 	{
@@ -17,6 +18,11 @@ namespace MercureWin
 		List<string[]> Marques = new List<string[]>();
 		List<string[]> SousFammilles = new List<string[]>();
 
+		/// <summary>
+		/// Constructeur pour ajouter un article
+		/// </summary>
+		/// <param name="IsListView"></param>
+		/// <param name="IsService"></param>
 		public FormUnArticle(ListView IsListView, MercureService IsService)
 			{
 			InitializeComponent();
@@ -27,6 +33,16 @@ namespace MercureWin
 			this.BtnModifier.Visible = false;
 			}
 
+		/// <summary>
+		/// Constructeur pour modifier un article
+		/// </summary>
+		/// <param name="IsListView"></param>
+		/// <param name="IsService"></param>
+		/// <param name="RefArticle"></param>
+		/// <param name="Description"></param>
+		/// <param name="SousFamille"></param>
+		/// <param name="Marque"></param>
+		/// <param name="PrixHT"></param>
 		public FormUnArticle(ListView IsListView, MercureService IsService,
 							string RefArticle, string Description, string SousFamille, string Marque, string PrixHT)
 			{
@@ -37,6 +53,7 @@ namespace MercureWin
 			// manquer le bouton de modifier
 			this.BtnAjouter.Visible = false;
 			TxtBoxRefArticle.Enabled = false;
+			LabelRefArticle.Text = "";
 			TxtBoxRefArticle.Text = RefArticle;
 			TxtBoxDescription.Text = Description;
 			TxtBoxPrix.Text = PrixHT;
@@ -81,14 +98,12 @@ namespace MercureWin
 			{
 			// Il existe case non remplit
 			if (this.TxtBoxDescription.Text == "" || this.TxtBoxRefArticle.Text == ""
-												|| this.TxtBoxPrix.Text == "" || this.CbBoxSousFamille.Text == "" || this.CbBoxMarque.Text == "")
+						|| this.TxtBoxPrix.Text == "" || this.CbBoxSousFamille.Text == "" || this.CbBoxMarque.Text == "")
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string message = "Remplissez toutes les cases vides, s'il vous plait!";
-				string caption = "Attention";
-				MessageBoxButtons buttons = MessageBoxButtons.OK;
+				string Message = "Remplissez toutes les cases vides, s'il vous plait!";
 				// Displays the MessageBox.
-				MessageBox.Show(message, caption, buttons);
+				MessageBox.Show(Message, "Attention");
 				}
 			else
 				{
@@ -96,6 +111,7 @@ namespace MercureWin
 				int IdSousFamille = 0;
 				try
 					{
+					// trouver le référence de marque
 					foreach (string[] Marque in Marques)
 						{
 						if (Marque[1] == CbBoxMarque.Text)
@@ -103,6 +119,7 @@ namespace MercureWin
 							IdMarque = int.Parse(Marque[0]);
 							}
 						}
+					// trouver le référence de sousfamille
 					foreach (string[] SousFamille in SousFammilles)
 						{
 						if (SousFamille[2] == CbBoxSousFamille.Text)
@@ -110,16 +127,14 @@ namespace MercureWin
 							IdSousFamille = int.Parse(SousFamille[0]);
 							}
 						}
-					MyService.AddArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, IdSousFamille, IdMarque, float.Parse(TxtBoxPrix.Text));
+					MyService.AddArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, IdSousFamille,
+											IdMarque, float.Parse(TxtBoxPrix.Text));
 					//----------------------------------------
 					// ajouter avec succès
 					//----------------------------------------
-					string message = "Succès! Ajouté un nouveau Article avec Réf: " + TxtBoxRefArticle.Text;
-					string caption = "Succès";
-					DialogResult Result;
-					MessageBoxButtons buttons = MessageBoxButtons.OK;
+					string Message = "Réussi! Ajouté un nouveau Article avec Réf: " + TxtBoxRefArticle.Text;
 					// Displays the MessageBox.
-					Result = MessageBox.Show(message, caption, buttons);
+					DialogResult Result = MessageBox.Show(Message, "Réussi");
 					if (Result == System.Windows.Forms.DialogResult.OK)
 						{
 						MyListView.Items.Clear();
@@ -127,13 +142,9 @@ namespace MercureWin
 						this.Close();
 						}
 					}
-				catch (Exception Ex)
+				catch (Exception)
 					{
-					string message = "Les cases remplit non valides!";
-					string caption = "Attention";
-					MessageBoxButtons buttons = MessageBoxButtons.OK;
-					// Displays the MessageBox.
-					MessageBox.Show(message, caption, buttons);
+					MessageBox.Show("Les cases remplit non valides!", "Attention");
 					}
 
 				}
@@ -155,26 +166,16 @@ namespace MercureWin
 				}
 			}
 
-		private void TxtBoxRefArticle_TextChanged(object sender, EventArgs e)
-			{
-			if (TxtBoxRefArticle.Text.Length > 8)
-				{
-				TxtBoxRefArticle.Text = TxtBoxRefArticle.Text.Substring(0, 8);
-				}
-			}
-
 		private void BtnModifier_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
 			if (this.TxtBoxDescription.Text == "" || this.TxtBoxRefArticle.Text == ""
-												|| this.TxtBoxPrix.Text == "" || this.CbBoxSousFamille.Text == "" || this.CbBoxMarque.Text == "")
+							|| this.TxtBoxPrix.Text == "" || this.CbBoxSousFamille.Text == "" || this.CbBoxMarque.Text == "")
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string message = "Remplissez toutes les cases vides, s'il vous plait!";
-				string caption = "Attention";
-				MessageBoxButtons buttons = MessageBoxButtons.OK;
+				string Message = "Remplissez toutes les cases vides, s'il vous plait!";
 				// Displays the MessageBox.
-				MessageBox.Show(message, caption, buttons);
+				MessageBox.Show(Message, "Attention");
 				}
 			else
 				{
@@ -182,6 +183,7 @@ namespace MercureWin
 				int IdSousFamille = 0;
 				try
 					{
+					// trouver le référence de marque
 					foreach (string[] Marque in Marques)
 						{
 						if (Marque[1] == CbBoxMarque.Text)
@@ -189,6 +191,7 @@ namespace MercureWin
 							IdMarque = int.Parse(Marque[0]);
 							}
 						}
+					// trouver le référence de sousfamille
 					foreach (string[] SousFamille in SousFammilles)
 						{
 						if (SousFamille[2] == CbBoxSousFamille.Text)
@@ -196,16 +199,14 @@ namespace MercureWin
 							IdSousFamille = int.Parse(SousFamille[0]);
 							}
 						}
-					MyService.UpdateArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, IdSousFamille, IdMarque, float.Parse(TxtBoxPrix.Text));
+					// update 
+					MyService.UpdateArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, IdSousFamille,
+											IdMarque, float.Parse(TxtBoxPrix.Text));
 					//----------------------------------------
-					// ajouter avec succès
+					// modifier avec succès
 					//----------------------------------------
-					string message = "Succès! Modifié un Article avec Réf: " + TxtBoxRefArticle.Text;
-					string caption = "Succès";
-					DialogResult Result;
-					MessageBoxButtons buttons = MessageBoxButtons.OK;
-					// Displays the MessageBox.
-					Result = MessageBox.Show(message, caption, buttons);
+					string Message = "Réussi! Modifié un Article avec Réf: " + TxtBoxRefArticle.Text;
+					DialogResult Result = MessageBox.Show(Message, "Réussi", MessageBoxButtons.OK);
 					if (Result == System.Windows.Forms.DialogResult.OK)
 						{
 						MyListView.Items.Clear();
@@ -213,13 +214,10 @@ namespace MercureWin
 						this.Close();
 						}
 					}
-				catch (Exception Ex)
+				catch (Exception)
 					{
-					string message = "Les cases remplit non valides!";
-					string caption = "Attention";
-					MessageBoxButtons buttons = MessageBoxButtons.OK;
 					// Displays the MessageBox.
-					MessageBox.Show(message, caption, buttons);
+					MessageBox.Show("Les cases remplit non valides!", "Attention");
 					}
 
 				}
