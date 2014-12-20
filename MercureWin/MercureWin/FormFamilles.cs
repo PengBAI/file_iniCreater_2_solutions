@@ -187,7 +187,5 @@ namespace MercureWin
 				this.TxtBoxModifierNom.Text = LsvFamilles.SelectedItems[0].SubItems[1].Text;
 				}
 			}
-
-
 		}
 	}

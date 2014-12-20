@@ -67,9 +67,9 @@
 			this.LabelURL.AutoSize = true;
 			this.LabelURL.Location = new System.Drawing.Point(17, 37);
 			this.LabelURL.Name = "LabelURL";
-			this.LabelURL.Size = new System.Drawing.Size(72, 13);
+			this.LabelURL.Size = new System.Drawing.Size(83, 13);
 			this.LabelURL.TabIndex = 3;
-			this.LabelURL.Text = "Ajouter l\'URL:";
+			this.LabelURL.Text = "Configurer URL:";
 			// 
 			// FormURL
 			// 

@@ -37,13 +37,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.BtnSupprimer = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.CbBoxModifier = new System.Windows.Forms.ComboBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.LabelRefSousFamille = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.TxtBoxModifierNom = new System.Windows.Forms.TextBox();
 			this.BtnModifier = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
-			this.CbBoxModifier = new System.Windows.Forms.ComboBox();
-			this.label5 = new System.Windows.Forms.Label();
 			this.DBAjouter.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -74,6 +74,7 @@
 			// 
 			// CbBoxFamille
 			// 
+			this.CbBoxFamille.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbBoxFamille.FormattingEnabled = true;
 			this.CbBoxFamille.Location = new System.Drawing.Point(17, 45);
 			this.CbBoxFamille.Name = "CbBoxFamille";
@@ -141,6 +142,24 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Modifier SousFamille";
 			// 
+			// CbBoxModifier
+			// 
+			this.CbBoxModifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CbBoxModifier.FormattingEnabled = true;
+			this.CbBoxModifier.Location = new System.Drawing.Point(17, 74);
+			this.CbBoxModifier.Name = "CbBoxModifier";
+			this.CbBoxModifier.Size = new System.Drawing.Size(121, 21);
+			this.CbBoxModifier.TabIndex = 5;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(17, 58);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(67, 13);
+			this.label5.TabIndex = 4;
+			this.label5.Text = "Nom Famille:";
+			// 
 			// LabelRefSousFamille
 			// 
 			this.LabelRefSousFamille.AutoSize = true;
@@ -184,23 +203,6 @@
 			this.label3.Size = new System.Drawing.Size(91, 13);
 			this.label3.TabIndex = 0;
 			this.label3.Text = "Nom SousFamille:";
-			// 
-			// CbBoxModifier
-			// 
-			this.CbBoxModifier.FormattingEnabled = true;
-			this.CbBoxModifier.Location = new System.Drawing.Point(17, 74);
-			this.CbBoxModifier.Name = "CbBoxModifier";
-			this.CbBoxModifier.Size = new System.Drawing.Size(121, 21);
-			this.CbBoxModifier.TabIndex = 5;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(17, 58);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(67, 13);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "Nom Famille:";
 			// 
 			// FormSousFamilles
 			// 

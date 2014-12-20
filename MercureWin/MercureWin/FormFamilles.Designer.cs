@@ -61,7 +61,7 @@
 			this.DBAjouter.Controls.Add(this.label1);
 			this.DBAjouter.Location = new System.Drawing.Point(257, 12);
 			this.DBAjouter.Name = "DBAjouter";
-			this.DBAjouter.Size = new System.Drawing.Size(124, 121);
+			this.DBAjouter.Size = new System.Drawing.Size(149, 121);
 			this.DBAjouter.TabIndex = 3;
 			this.DBAjouter.TabStop = false;
 			this.DBAjouter.Text = "Nouvelle Famille";
@@ -70,14 +70,14 @@
 			// 
 			this.TxtBoxNomFamille.Location = new System.Drawing.Point(17, 43);
 			this.TxtBoxNomFamille.Name = "TxtBoxNomFamille";
-			this.TxtBoxNomFamille.Size = new System.Drawing.Size(87, 20);
+			this.TxtBoxNomFamille.Size = new System.Drawing.Size(116, 20);
 			this.TxtBoxNomFamille.TabIndex = 1;
 			// 
 			// BtnAjouter
 			// 
-			this.BtnAjouter.Location = new System.Drawing.Point(17, 82);
+			this.BtnAjouter.Location = new System.Drawing.Point(17, 80);
 			this.BtnAjouter.Name = "BtnAjouter";
-			this.BtnAjouter.Size = new System.Drawing.Size(87, 23);
+			this.BtnAjouter.Size = new System.Drawing.Size(116, 23);
 			this.BtnAjouter.TabIndex = 0;
 			this.BtnAjouter.Text = "Ajouter";
 			this.BtnAjouter.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Location = new System.Drawing.Point(257, 156);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(124, 155);
+			this.groupBox1.Size = new System.Drawing.Size(149, 155);
 			this.groupBox1.TabIndex = 4;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Modifier Famille";
@@ -128,14 +128,14 @@
 			// 
 			this.TxtBoxModifierNom.Location = new System.Drawing.Point(17, 76);
 			this.TxtBoxModifierNom.Name = "TxtBoxModifierNom";
-			this.TxtBoxModifierNom.Size = new System.Drawing.Size(87, 20);
+			this.TxtBoxModifierNom.Size = new System.Drawing.Size(116, 20);
 			this.TxtBoxModifierNom.TabIndex = 1;
 			// 
 			// BtnModifier
 			// 
 			this.BtnModifier.Location = new System.Drawing.Point(17, 114);
 			this.BtnModifier.Name = "BtnModifier";
-			this.BtnModifier.Size = new System.Drawing.Size(87, 23);
+			this.BtnModifier.Size = new System.Drawing.Size(116, 23);
 			this.BtnModifier.TabIndex = 0;
 			this.BtnModifier.Text = "Modifier";
 			this.BtnModifier.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
 			// 
 			this.BtnSupprimer.Location = new System.Drawing.Point(274, 332);
 			this.BtnSupprimer.Name = "BtnSupprimer";
-			this.BtnSupprimer.Size = new System.Drawing.Size(87, 23);
+			this.BtnSupprimer.Size = new System.Drawing.Size(116, 23);
 			this.BtnSupprimer.TabIndex = 2;
 			this.BtnSupprimer.Text = "Supprimer";
 			this.BtnSupprimer.UseVisualStyleBackColor = true;
@@ -164,7 +164,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(393, 367);
+			this.ClientSize = new System.Drawing.Size(418, 367);
 			this.Controls.Add(this.BtnSupprimer);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.DBAjouter);

@@ -62,11 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAPropos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAPropos.Designer.cs">
+      <DependentUpon>FormAPropos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormArticles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormArticles.Designer.cs">
       <DependentUpon>FormArticles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClients.Designer.cs">
+      <DependentUpon>FormClients.cs</DependentUpon>
     </Compile>
     <Compile Include="FormFamilles.cs">
       <SubType>Form</SubType>
@@ -98,6 +110,12 @@
     <Compile Include="FormUnArticle.Designer.cs">
       <DependentUpon>FormUnArticle.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUnClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUnClient.Designer.cs">
+      <DependentUpon>FormUnClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormURL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,8 +127,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAPropos.resx">
+      <DependentUpon>FormAPropos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormArticles.resx">
       <DependentUpon>FormArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClients.resx">
+      <DependentUpon>FormClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFamilles.resx">
       <DependentUpon>FormFamilles.cs</DependentUpon>
@@ -127,6 +151,9 @@
     <EmbeddedResource Include="FormUnArticle.resx">
       <DependentUpon>FormUnArticle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormUnClient.resx">
+      <DependentUpon>FormUnClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormURL.resx">
       <DependentUpon>FormURL.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +165,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -175,6 +203,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sources\loading.gif" />
+    <None Include="sources\logo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

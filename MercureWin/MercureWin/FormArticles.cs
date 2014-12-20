@@ -21,15 +21,12 @@ namespace MercureWin
 			//-------------------------------------------------------------------------------------
 			Service = new MercureService();
 			Service.Url = MyURL;
+			this.ShowArticles();
 			}
 
 		private void FormArticles_Load(object sender, EventArgs e)
 			{
-			this.ShowArticles();
-			}
 
-		private void ShowArticles()
-			{
 			LstViewArticles.View = View.Details;
 			LstViewArticles.GridLines = true;
 			LstViewArticles.FullRowSelect = true;
@@ -45,6 +42,11 @@ namespace MercureWin
 			LstViewArticles.Columns.Add("RéfMarque", 80);
 			LstViewArticles.Columns.Add("NomMarque", 100);
 			LstViewArticles.Columns.Add("Prix H.T.", 80);
+			}
+
+		private void ShowArticles()
+			{
+
 			//-------------------------------------------------------------------------------------
 			// Récupération des articles & Affichage
 			//-------------------------------------------------------------------------------------
@@ -87,7 +89,7 @@ namespace MercureWin
 			{
 			FormUnArticle UnArticle = new FormUnArticle(LstViewArticles, Service);
 			UnArticle.Text = "Ajouter un nouveau Article";
-			UnArticle.Show();
+			UnArticle.ShowDialog();
 			}
 
 		private void BtnModifierArticle_Click(object sender, EventArgs e)
@@ -99,7 +101,7 @@ namespace MercureWin
 															Item.SubItems[1].Text, Item.SubItems[5].Text,
 															Item.SubItems[7].Text, Item.SubItems[8].Text);
 				UnArticle.Text = "Modifier Article réf: " + Item.SubItems[0].Text;
-				UnArticle.Show();
+				UnArticle.ShowDialog();
 				}
 			}
 		}

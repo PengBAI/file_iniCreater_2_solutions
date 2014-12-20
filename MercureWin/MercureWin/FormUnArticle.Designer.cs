@@ -80,6 +80,7 @@
 			// 
 			// CbBoxSousFamille
 			// 
+			this.CbBoxSousFamille.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbBoxSousFamille.FormattingEnabled = true;
 			this.CbBoxSousFamille.Location = new System.Drawing.Point(115, 79);
 			this.CbBoxSousFamille.Name = "CbBoxSousFamille";
@@ -97,6 +98,7 @@
 			// 
 			// CbBoxMarque
 			// 
+			this.CbBoxMarque.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CbBoxMarque.FormattingEnabled = true;
 			this.CbBoxMarque.Location = new System.Drawing.Point(115, 106);
 			this.CbBoxMarque.Name = "CbBoxMarque";

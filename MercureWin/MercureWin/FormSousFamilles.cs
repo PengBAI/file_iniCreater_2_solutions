@@ -112,10 +112,10 @@ namespace MercureWin
 		private void BtnAjouter_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
-			if (this.CbBoxFamille.Text == "" || this.TxtBoxNomSousFamille.Text == "" || this.GetRefFamille(this.CbBoxFamille.Text) == -1)
+			if (this.CbBoxFamille.Text == "" || this.TxtBoxNomSousFamille.Text == "")
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string Message = "Les cases invalides ou NomFamille n'existe pas!";
+				string Message = "Remplissez toutes les cases!";
 				// Displays the MessageBox.
 				MessageBox.Show(Message, "Attention");
 				}
@@ -155,7 +155,7 @@ namespace MercureWin
 		private void BtnModifier_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
-			if (this.TxtBoxModifierNom.Text == "" || this.CbBoxModifier.Text == "" || this.GetRefFamille(this.CbBoxModifier.Text) == -1)
+			if (this.TxtBoxModifierNom.Text == "" || this.CbBoxModifier.Text == "")
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
 				string Message = "Choisissez un SousFamille dans la Liste!";
@@ -221,12 +221,13 @@ namespace MercureWin
 				}
 			return false;
 			}
+
 		private void BtnSupprimer_Click(object sender, EventArgs e)
 			{
 			if (LsvSousFamilles.SelectedItems.Count != 0)
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string Message = "Supprimer " + LsvSousFamilles.SelectedItems.Count + " marques sélectionés ?";
+				string Message = "Supprimer " + LsvSousFamilles.SelectedItems.Count + " sousfamilles sélectionés ?";
 				// Displays the MessageBox.
 				DialogResult result = MessageBox.Show(Message, "Attention", MessageBoxButtons.OKCancel);
 
@@ -236,7 +237,7 @@ namespace MercureWin
 						{
 						if (IsSousFamilleUsed(int.Parse(Item.SubItems[0].Text)))
 							{
-							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Articles.\nSupprimer l'article d'abord.", "Echec");
+							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Articles.\nSupprimer l'article d'abord.", "Echèc");
 							}
 						else
 							{

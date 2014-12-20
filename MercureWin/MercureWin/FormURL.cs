@@ -26,13 +26,16 @@ namespace MercureWin
 
 		private void BtnOkURL_Click(object sender, EventArgs e)
 			{
-			// check
+			if (!this.TxtBoxURL.Text.Contains("http://"))
+				{
+				this.TxtBoxURL.Text = "http://" + this.TxtBoxURL.Text.Trim();
+				}
 			if (!isValidURL(TxtBoxURL.Text))
 				{
 				// Initializes the variables to pass to the MessageBox.Show method.
-				string Message = "You did not enter a URL. Cancel this operation?";
+				string Message = "URL invalide! Service Mercure non trouvé";
 				// Displays the MessageBox.
-				MessageBox.Show(Message, "Error Detected in Input", MessageBoxButtons.OK);
+				MessageBox.Show(Message, "Erreur Detectée URL", MessageBoxButtons.OK);
 				}
 			else
 				{
@@ -46,9 +49,21 @@ namespace MercureWin
 		/// </summary>
 		/// <param name="source">URL</param>
 		/// <returns></returns>
-		public static bool isValidURL(string Url)
+		private bool isValidURL(string URL)
 			{
-			return Uri.IsWellFormedUriString(Url, UriKind.RelativeOrAbsolute);
+			try
+				{
+				var Request = WebRequest.Create(URL) as HttpWebRequest;
+				Request.Method = "GET";
+				using (var Response = (HttpWebResponse)Request.GetResponse())
+					{
+					return Response.StatusCode == HttpStatusCode.OK;
+					}
+				}
+			catch
+				{
+				return false;
+				}
 			}
 		}
 	}
