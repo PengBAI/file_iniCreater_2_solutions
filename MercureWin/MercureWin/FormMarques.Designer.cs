@@ -38,6 +38,8 @@
 			this.TxtBoxModifierNom = new System.Windows.Forms.TextBox();
 			this.BtnModifier = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.LabelRefMarque = new System.Windows.Forms.Label();
 			this.DBAjouter.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -46,7 +48,7 @@
 			// 
 			this.LsvMarques.Location = new System.Drawing.Point(12, 12);
 			this.LsvMarques.Name = "LsvMarques";
-			this.LsvMarques.Size = new System.Drawing.Size(216, 292);
+			this.LsvMarques.Size = new System.Drawing.Size(216, 344);
 			this.LsvMarques.TabIndex = 0;
 			this.LsvMarques.UseCompatibleStateImageBehavior = false;
 			this.LsvMarques.View = System.Windows.Forms.View.Details;
@@ -54,7 +56,7 @@
 			// 
 			// BtnSupprimer
 			// 
-			this.BtnSupprimer.Location = new System.Drawing.Point(251, 281);
+			this.BtnSupprimer.Location = new System.Drawing.Point(251, 333);
 			this.BtnSupprimer.Name = "BtnSupprimer";
 			this.BtnSupprimer.Size = new System.Drawing.Size(87, 23);
 			this.BtnSupprimer.TabIndex = 1;
@@ -102,26 +104,28 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.LabelRefMarque);
+			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.TxtBoxModifierNom);
 			this.groupBox1.Controls.Add(this.BtnModifier);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Location = new System.Drawing.Point(234, 139);
+			this.groupBox1.Location = new System.Drawing.Point(234, 156);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(124, 121);
+			this.groupBox1.Size = new System.Drawing.Size(124, 151);
 			this.groupBox1.TabIndex = 3;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Modifier Marque";
 			// 
 			// TxtBoxModifierNom
 			// 
-			this.TxtBoxModifierNom.Location = new System.Drawing.Point(17, 43);
+			this.TxtBoxModifierNom.Location = new System.Drawing.Point(17, 79);
 			this.TxtBoxModifierNom.Name = "TxtBoxModifierNom";
 			this.TxtBoxModifierNom.Size = new System.Drawing.Size(87, 20);
 			this.TxtBoxModifierNom.TabIndex = 1;
 			// 
 			// BtnModifier
 			// 
-			this.BtnModifier.Location = new System.Drawing.Point(17, 82);
+			this.BtnModifier.Location = new System.Drawing.Point(17, 122);
 			this.BtnModifier.Name = "BtnModifier";
 			this.BtnModifier.Size = new System.Drawing.Size(87, 23);
 			this.BtnModifier.TabIndex = 0;
@@ -132,17 +136,35 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(17, 27);
+			this.label2.Location = new System.Drawing.Point(17, 63);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(71, 13);
 			this.label2.TabIndex = 0;
 			this.label2.Text = "Nom Marque:";
 			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(17, 35);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(69, 13);
+			this.label4.TabIndex = 2;
+			this.label4.Text = "Réf Marque: ";
+			// 
+			// LabelRefMarque
+			// 
+			this.LabelRefMarque.AutoSize = true;
+			this.LabelRefMarque.Location = new System.Drawing.Point(83, 35);
+			this.LabelRefMarque.Name = "LabelRefMarque";
+			this.LabelRefMarque.Size = new System.Drawing.Size(19, 13);
+			this.LabelRefMarque.TabIndex = 3;
+			this.LabelRefMarque.Text = "ref";
+			// 
 			// FormMarques
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(370, 316);
+			this.ClientSize = new System.Drawing.Size(370, 368);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.BtnSupprimer);
 			this.Controls.Add(this.DBAjouter);
@@ -171,5 +193,7 @@
 		private System.Windows.Forms.TextBox TxtBoxModifierNom;
 		private System.Windows.Forms.Button BtnModifier;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Label LabelRefMarque;
 		}
 	}

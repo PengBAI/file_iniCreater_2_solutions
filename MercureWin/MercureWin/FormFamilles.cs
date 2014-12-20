@@ -13,7 +13,7 @@ namespace MercureWin
 	public partial class FormFamilles : Form
 		{
 		MercureService Service;
-		int SelectedRefFamille = 0;
+		
 		public FormFamilles(string MyURL)
 			{
 			InitializeComponent();
@@ -74,6 +74,7 @@ namespace MercureWin
 						{
 						TxtBoxNomFamille.Text = "";
 						TxtBoxModifierNom.Text = "";
+						LabelRefFamille.Text = "";
 						LsvFamilles.Items.Clear();
 						ShowFamilles();
 						}
@@ -134,6 +135,7 @@ namespace MercureWin
 							}
 						}
 					TxtBoxModifierNom.Text = "";
+					LabelRefFamille.Text = "";
 					// refresh ListView
 					LsvFamilles.Refresh();
 					}
@@ -155,23 +157,24 @@ namespace MercureWin
 				try
 					{
 					// update 
-					Service.UpdateFamille(SelectedRefFamille, TxtBoxModifierNom.Text);
+					Service.UpdateFamille(int.Parse(this.LabelRefFamille.Text), TxtBoxModifierNom.Text);
 					//----------------------------------------
 					// modifier avec succès
 					//----------------------------------------
-					string Message = "Réussi! Modifié un Marque avec Réf: " + SelectedRefFamille + " Nom: " + TxtBoxModifierNom.Text;
+					string Message = "Réussi! Modifié un Marque avec Réf: " + this.LabelRefFamille.Text + " Nom: " + TxtBoxModifierNom.Text;
 					DialogResult Result = MessageBox.Show(Message, "Réussi", MessageBoxButtons.OK);
 					if (Result == System.Windows.Forms.DialogResult.OK)
 						{
 						LsvFamilles.Items.Clear();
 						ShowFamilles();
-						TxtBoxModifierNom.Text = "";
+						this.TxtBoxModifierNom.Text = "";
+						this.LabelRefFamille.Text = "";
 						}
 					}
 				catch (Exception)
 					{
 					// Displays the MessageBox.
-					MessageBox.Show("Les cases remplit non valides!", "Attention");
+					MessageBox.Show("Choisissez un Marque dans la Liste!", "Attention");
 					}
 				}
 			}
@@ -180,7 +183,7 @@ namespace MercureWin
 			{
 			if (LsvFamilles.SelectedItems.Count == 1)
 				{
-				SelectedRefFamille = int.Parse(LsvFamilles.SelectedItems[0].SubItems[0].Text);
+				this.LabelRefFamille.Text = LsvFamilles.SelectedItems[0].SubItems[0].Text;
 				this.TxtBoxModifierNom.Text = LsvFamilles.SelectedItems[0].SubItems[1].Text;
 				}
 			}

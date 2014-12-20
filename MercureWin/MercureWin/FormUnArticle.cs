@@ -17,7 +17,6 @@ namespace MercureWin
 		MercureService MyService;
 		List<string[]> Marques = new List<string[]>();
 		List<string[]> SousFammilles = new List<string[]>();
-
 		/// <summary>
 		/// Constructeur pour ajouter un article
 		/// </summary>
@@ -67,6 +66,7 @@ namespace MercureWin
 		/// </summary>
 		private void InitComboBox()
 			{
+			
 			//-------------------------------------------------------------------------------------
 			// Récupération des marques
 			//-------------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ namespace MercureWin
 	public partial class FormMarques : Form
 		{
 		MercureService Service;
-		int SelectedRefMarque = 0;
+		
 		public FormMarques(string MyURL)
 			{
 			InitializeComponent();
@@ -77,6 +77,7 @@ namespace MercureWin
 						{
 						TxtBoxNomMarque.Text = "";
 						TxtBoxModifierNom.Text = "";
+						LabelRefMarque.Text = "";
 						LsvMarques.Items.Clear();
 						ShowMarques();
 						}
@@ -137,6 +138,7 @@ namespace MercureWin
 							}
 						}
 					TxtBoxModifierNom.Text = "";
+					LabelRefMarque.Text = "";
 					// refresh ListView
 					LsvMarques.Refresh();
 					}
@@ -158,23 +160,24 @@ namespace MercureWin
 				try
 					{
 					// update 
-					Service.UpdateMarque(SelectedRefMarque, TxtBoxModifierNom.Text);
+					Service.UpdateMarque(int.Parse(LabelRefMarque.Text), TxtBoxModifierNom.Text);
 					//----------------------------------------
 					// modifier avec succès
 					//----------------------------------------
-					string Message = "Réussi! Modifié un Marque avec Réf: " + SelectedRefMarque + " Nom: " + TxtBoxModifierNom.Text;
+					string Message = "Réussi! Modifié un Marque avec Réf: " + LabelRefMarque.Text + " Nom: " + TxtBoxModifierNom.Text;
 					DialogResult Result = MessageBox.Show(Message, "Réussi", MessageBoxButtons.OK);
 					if (Result == System.Windows.Forms.DialogResult.OK)
 						{
 						LsvMarques.Items.Clear();
 						ShowMarques();
 						TxtBoxModifierNom.Text = "";
+						LabelRefMarque.Text = "";
 						}
 					}
 				catch (Exception)
 					{
 					// Displays the MessageBox.
-					MessageBox.Show("Les cases remplit non valides!", "Attention");
+					MessageBox.Show("Choisissez un Marque dans la Liste!", "Attention");
 					}
 				}
 			}
@@ -183,8 +186,8 @@ namespace MercureWin
 			{
 			if (LsvMarques.SelectedItems.Count == 1)
 				{
-				SelectedRefMarque = int.Parse(LsvMarques.SelectedItems[0].SubItems[0].Text);
-				TxtBoxModifierNom.Text = LsvMarques.SelectedItems[0].SubItems[1].Text;
+				this.LabelRefMarque.Text = LsvMarques.SelectedItems[0].SubItems[0].Text;
+				this.TxtBoxModifierNom.Text = LsvMarques.SelectedItems[0].SubItems[1].Text;
 				}
 			}
 
