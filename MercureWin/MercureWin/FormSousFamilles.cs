@@ -27,6 +27,9 @@ namespace MercureWin
 
 		private void FormSousFamilles_Load(object sender, EventArgs e)
 			{
+			//-------------------------------------------------------------------------------------
+			// Initialisation du ListView et remplir le comboBox
+			//-------------------------------------------------------------------------------------
 			LsvSousFamilles.View = View.Details;
 			LsvSousFamilles.GridLines = true;
 			LsvSousFamilles.FullRowSelect = true;
@@ -40,7 +43,7 @@ namespace MercureWin
 			}
 
 		/// <summary>
-		/// remplir les combobox Marques et SousFamilles
+		/// Remplir les combobox Familles
 		/// </summary>
 		private void InitComboBox()
 			{
@@ -55,7 +58,11 @@ namespace MercureWin
 				CbBoxModifier.Items.Add(Famille[1]);
 				}
 			}
-
+		/// <summary>
+		/// Retourner le nom de famille
+		/// </summary>
+		/// <param name="RefFamille"> référence de famille</param>
+		/// <returns></returns>
 		private string GetNomFamille(int RefFamille)
 			{
 			//-------------------------------------------------------------------------------------
@@ -73,6 +80,9 @@ namespace MercureWin
 			return null;
 			}
 
+		/// <summary>
+		/// Ajouter les sousfamilles dans le ListView, en ajoutent le NomFamille
+		/// </summary>
 		private void ShowSousFamilles()
 			{
 			//-------------------------------------------------------------------------------------
@@ -84,17 +94,17 @@ namespace MercureWin
 				{
 				ListViewItem Item;
 				string[] NewItem = { Datas[0], Datas[2], Datas[1], GetNomFamille(int.Parse(Datas[1])) };
-				//add items to ListView
 				Item = new ListViewItem(NewItem);
 				LsvSousFamilles.Items.Add(Item);
 				}
 			}
 
 		/// <summary>
-		/// get le réfrence d'une famille donnée
+		/// Retourner le réfrence d'une famille donnée
 		/// </summary>
 		/// <param name="NomFamille"></param>
 		/// <returns></returns>
+		/// <exception cref="WarningException">NomFamille non trouvé</exception>
 		private int GetRefFamille(string NomFamille)
 			{
 
@@ -106,9 +116,14 @@ namespace MercureWin
 					return int.Parse(Famille[0]);
 					}
 				}
-			return -1;
+			throw new WarningException("Famille non trouvée");
 			}
 
+		/// <summary>
+		/// Ajouter la nouvelle sousfamille
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAjouter_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -124,10 +139,9 @@ namespace MercureWin
 
 				try
 					{
-
 					Service.AddSousFamille(this.GetRefFamille(this.CbBoxFamille.Text), TxtBoxNomSousFamille.Text);
 					//----------------------------------------
-					// ajouter avec succès
+					// Ajouter avec succès
 					//----------------------------------------
 					string Message = "Réussi! Ajouté un nouveau SousFamille avec Nom: " + TxtBoxNomSousFamille.Text;
 					// Displays the MessageBox.
@@ -142,16 +156,19 @@ namespace MercureWin
 
 						ShowSousFamilles();
 						}
-
 					}
-				catch (Exception)
+				catch
 					{
 					MessageBox.Show("Les cases remplit non valides!", "Attention");
 					}
-
 				}
 			}
 
+		/// <summary>
+		/// Modifier une sousfamille
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnModifier_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -166,10 +183,10 @@ namespace MercureWin
 				{
 				try
 					{
-					// update 
+					// Update 
 					Service.UpdateSousFamille(int.Parse(LabelRefSousFamille.Text), GetRefFamille(CbBoxModifier.Text), TxtBoxModifierNom.Text);
 					//----------------------------------------
-					// modifier avec succès
+					// Modifier avec succès
 					//----------------------------------------
 					string Message = "Réussi! Modifié un SousFamille avec Réf: " + LabelRefSousFamille.Text + " Nom: " + TxtBoxModifierNom.Text;
 					DialogResult Result = MessageBox.Show(Message, "Réussi", MessageBoxButtons.OK);
@@ -177,12 +194,12 @@ namespace MercureWin
 						{
 						LsvSousFamilles.Items.Clear();
 						ShowSousFamilles();
+						CbBoxModifier.Text ="";
 						TxtBoxModifierNom.Text = "";
 						LabelRefSousFamille.Text = "";
-						CbBoxModifier.Text = "";
 						}
 					}
-				catch (Exception)
+				catch
 					{
 					// Displays the MessageBox.
 					MessageBox.Show("Choisissez un Marque dans la Liste!", "Attention");
@@ -201,7 +218,7 @@ namespace MercureWin
 			}
 
 		/// <summary>
-		/// vérifier si le NomSousFamille est déjà utilisé dans articles
+		/// Vérifier si le NomSousFamille est déjà utilisé dans articles
 		/// </summary>
 		/// <param name="NomMarque"></param>
 		/// <returns></returns>
@@ -222,6 +239,11 @@ namespace MercureWin
 			return false;
 			}
 
+		/// <summary>
+		/// Supprimer les sousfamilles sélectionnées
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnSupprimer_Click(object sender, EventArgs e)
 			{
 			if (LsvSousFamilles.SelectedItems.Count != 0)

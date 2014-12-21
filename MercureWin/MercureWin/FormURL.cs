@@ -24,17 +24,20 @@ namespace MercureWin
 			this.Close();
 			}
 
+		/// <summary>
+		/// Vérifier URL et ajouter un URL
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnOkURL_Click(object sender, EventArgs e)
 			{
-			if (!this.TxtBoxURL.Text.Contains("http://"))
+			if (!this.TxtBoxURL.Text.StartsWith("http://"))
 				{
 				this.TxtBoxURL.Text = "http://" + this.TxtBoxURL.Text.Trim();
 				}
-			if (!isValidURL(TxtBoxURL.Text))
+			if (!IsValidURL(TxtBoxURL.Text))
 				{
-				// Initializes the variables to pass to the MessageBox.Show method.
-				string Message = "URL invalide! Service Mercure non trouvé";
-				// Displays the MessageBox.
+				string Message = "URL invalide! Service Mercure non trouvé.";
 				MessageBox.Show(Message, "Erreur Detectée URL", MessageBoxButtons.OK);
 				}
 			else
@@ -45,11 +48,11 @@ namespace MercureWin
 			}
 
 		/// <summary>
-		/// check URL est disponible
+		/// Vérifier URL est disponible
 		/// </summary>
 		/// <param name="source">URL</param>
-		/// <returns></returns>
-		private bool isValidURL(string URL)
+		/// <returns>true si disponible, sinon false</returns>
+		private bool IsValidURL(string URL)
 			{
 			try
 				{

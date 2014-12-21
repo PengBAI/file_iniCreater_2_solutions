@@ -21,6 +21,11 @@ namespace MercureWin
 			toolStripStatusLabelMain.Text = "";
 			}
 
+		/// <summary>
+		/// La fenêtre pour ajouter URL
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void editURLToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			FormURL UrlMDIChildWin = new FormURL(this.toolStripStatusLabelMain);
@@ -31,6 +36,11 @@ namespace MercureWin
 
 			}
 
+		/// <summary>
+		/// La fenêtre pour la gestion des articles
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void articlesToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			if (this.toolStripStatusLabelMain.Text != "")
@@ -50,6 +60,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// La fenêtre pour la gestion des Marques
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void marquesToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			if (this.toolStripStatusLabelMain.Text != "")
@@ -62,13 +77,16 @@ namespace MercureWin
 				}
 			else
 				{
-				// Initializes the variables to pass to the MessageBox.Show method.
 				string Message = "URL invalide! Ajouter d'abord un URL!";
-				// Displays the MessageBox.
 				MessageBox.Show(Message, "Erreur URL");
 				}
 			}
 
+		/// <summary>
+		/// La fenêtre pour la gestion des familles
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void famillesToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			if (this.toolStripStatusLabelMain.Text != "")
@@ -77,32 +95,33 @@ namespace MercureWin
 				FormFamilles MDIChild = new FormFamilles(this.toolStripStatusLabelMain.Text);
 				MDIChild.MdiParent = this;
 				MDIChild.Show();
-				
+
 				}
 			else
 				{
-				// Initializes the variables to pass to the MessageBox.Show method.
 				string Message = "URL invalide! Ajouter d'abord un URL!";
-				// Displays the MessageBox.
 				MessageBox.Show(Message, "Erreur URL");
 				}
 			}
 
+		/// <summary>
+		/// La fenêtre pour la gestion des sousfamilles
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void sousFamillesToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			if (this.toolStripStatusLabelMain.Text != "")
 				{
-				
+
 				FormSousFamilles MDIChild = new FormSousFamilles(this.toolStripStatusLabelMain.Text);
 				MDIChild.MdiParent = this;
 				MDIChild.Show();
-				
+
 				}
 			else
 				{
-				// Initializes the variables to pass to the MessageBox.Show method.
 				string Message = "URL invalide! Ajouter d'abord un URL!";
-				// Displays the MessageBox.
 				MessageBox.Show(Message, "Erreur URL");
 				}
 			}
@@ -111,7 +130,12 @@ namespace MercureWin
 			{
 			this.Close();
 			}
-
+		
+		/// <summary>
+		/// La fenêtre pour la gestion des clients
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void clientToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			if (this.toolStripStatusLabelMain.Text != "")
@@ -121,7 +145,7 @@ namespace MercureWin
 				MDIChild.MdiParent = this;
 				MDIChild.WindowState = FormWindowState.Maximized;
 				MDIChild.Show();
-				
+
 				}
 			else
 				{
@@ -133,6 +157,11 @@ namespace MercureWin
 
 			}
 
+		/// <summary>
+		/// La fenêtre pour voir à propos
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
 			{
 			FormAPropos APropos = new FormAPropos();

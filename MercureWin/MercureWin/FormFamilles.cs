@@ -23,6 +23,9 @@ namespace MercureWin
 
 		private void FormFamilles_Load(object sender, EventArgs e)
 			{
+			//-------------------------------------------------------------------------------------
+			// Initialisation le ListView
+			//-------------------------------------------------------------------------------------
 			LsvFamilles.View = View.Details;
 			LsvFamilles.GridLines = true;
 			LsvFamilles.FullRowSelect = true;
@@ -33,6 +36,9 @@ namespace MercureWin
 			this.ShowFamilles();
 			}
 
+		/// <summary>
+		/// Récupérer les données et les ajouter dans le ListView
+		/// </summary>
 		private void ShowFamilles()
 			{
 			//-------------------------------------------------------------------------------------
@@ -49,6 +55,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Ajouter une nouvelle famille
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAjouter_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -65,7 +76,7 @@ namespace MercureWin
 					{
 					Service.AddFamille(TxtBoxNomFamille.Text);
 					//----------------------------------------
-					// ajouter avec succès
+					// Ajouter avec réussi
 					//----------------------------------------
 					string Message = "Réussi! Ajouté un nouveau Famille: " + TxtBoxNomFamille.Text;
 					// Displays the MessageBox.
@@ -88,7 +99,7 @@ namespace MercureWin
 			}
 
 		/// <summary>
-		/// vérifier si le NomFamille est déjà utilisé dans SousFamille
+		/// Vérifier si le NomFamille est déjà utilisé dans SousFamille
 		/// </summary>
 		/// <param name="NomMarque"></param>
 		/// <returns></returns>
@@ -109,6 +120,11 @@ namespace MercureWin
 			return false;
 			}
 
+		/// <summary>
+		/// Supprimer les familles sélectionnées
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnSupprimer_Click(object sender, EventArgs e)
 			{
 			if (LsvFamilles.SelectedItems.Count != 0)
@@ -124,7 +140,7 @@ namespace MercureWin
 						{
 						if (IsMarqueUsed(int.Parse(Item.SubItems[0].Text)))
 							{
-							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans SouFamilles.\nSupprimer la sousfamille d'abord.", "Echec");
+							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans SouFamilles.\nSupprimer la sousfamille d'abord.", "Echèc");
 							}
 						else
 							{
@@ -142,6 +158,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Modifier la famille sélectionnée
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnModifier_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -156,7 +177,7 @@ namespace MercureWin
 				{
 				try
 					{
-					// update 
+					// modifier les données
 					Service.UpdateFamille(int.Parse(this.LabelRefFamille.Text), TxtBoxModifierNom.Text);
 					//----------------------------------------
 					// modifier avec succès
@@ -179,6 +200,12 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Changer les données dans le groupe "Modifier" dans la fenêtre 
+		/// quand sélectionner la famille dans le ListView, pour initialiser les données à modifier
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void LsvFamilles_SelectedIndexChanged(object sender, EventArgs e)
 			{
 			if (LsvFamilles.SelectedItems.Count == 1)

@@ -26,6 +26,9 @@ namespace MercureWin
 
 		private void FormMarques_Load(object sender, EventArgs e)
 			{
+			//-------------------------------------------------------------------------------------
+			// Initialisation du ListView
+			//-------------------------------------------------------------------------------------
 			LsvMarques.View = View.Details;
 			LsvMarques.GridLines = true;
 			LsvMarques.FullRowSelect = true;
@@ -36,22 +39,29 @@ namespace MercureWin
 			this.ShowMarques();
 			}
 
+		/// <summary>
+		/// Récupérer les données et ajouter dans le ListView
+		/// </summary>
 		private void ShowMarques()
 			{
 			//-------------------------------------------------------------------------------------
-			// Récupération des articles & Affichage
+			// Récupération des marques & Affichage
 			//-------------------------------------------------------------------------------------
 			List<string[]> Marques = new List<string[]>();
 			Marques = Service.GetMarques();
 			foreach (string[] Datas in Marques)
 				{
 				ListViewItem Item;
-				//add items to ListView
 				Item = new ListViewItem(Datas);
 				LsvMarques.Items.Add(Item);
 				}
 			}
 
+		/// <summary>
+		/// Ajouter une nouvelle marque
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAjouter_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -91,7 +101,7 @@ namespace MercureWin
 			}
 
 		/// <summary>
-		/// vérifier si le NomMarque est déjà utilisé dans articles
+		/// Vérifier si le NomMarque est déjà utilisé dans articles
 		/// </summary>
 		/// <param name="NomMarque"></param>
 		/// <returns></returns>
@@ -112,6 +122,11 @@ namespace MercureWin
 			return false;
 			}
 
+		/// <summary>
+		/// Supprimer la marque sélectionnée dans la liste
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnSupprimer_Click(object sender, EventArgs e)
 			{
 			if (LsvMarques.SelectedItems.Count != 0)
@@ -127,7 +142,7 @@ namespace MercureWin
 						{
 						if (IsMarqueUsed(int.Parse(Item.SubItems[0].Text)))
 							{
-							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Articles.\nSupprimer l'article d'abord.","Echec");
+							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Articles.\nSupprimer l'article d'abord.","Echèc");
 							}
 						else
 							{
@@ -145,6 +160,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Modifier la marque sélectionnée
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnModifier_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -182,6 +202,12 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Changer les données dans le groupe "modifier" dans cette fenêtre
+		/// en temp réel quand choisir une marque dans la liste
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void LsvMarques_SelectedIndexChanged(object sender, EventArgs e)
 			{
 			if (LsvMarques.SelectedItems.Count == 1)
@@ -190,8 +216,5 @@ namespace MercureWin
 				this.TxtBoxModifierNom.Text = LsvMarques.SelectedItems[0].SubItems[1].Text;
 				}
 			}
-
 		}
-
-
 	}

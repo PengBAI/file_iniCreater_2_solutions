@@ -26,6 +26,9 @@ namespace MercureWin
 
 		private void FormClients_Load(object sender, EventArgs e)
 			{
+			//-------------------------------------------------------------------------------------
+			// Initialisation de ListView du client
+			//-------------------------------------------------------------------------------------
 			LstViewClients.View = View.Details;
 			LstViewClients.GridLines = true;
 			LstViewClients.FullRowSelect = true;
@@ -42,6 +45,9 @@ namespace MercureWin
 			LstViewClients.Columns.Add("Pays", 80);
 			}
 
+		/// <summary>
+		/// Récupérer les données et les ajouter dans le ListView
+		/// </summary>
 		private void ShowClients()
 			{
 
@@ -59,6 +65,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Ajouter un nouveau client
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAjouterClient_Click(object sender, EventArgs e)
 			{
 			FormUnClient UnArticle = new FormUnClient(LstViewClients, Service);

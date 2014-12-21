@@ -46,7 +46,6 @@ namespace MercureWin
 
 		private void ShowArticles()
 			{
-
 			//-------------------------------------------------------------------------------------
 			// Récupération des articles & Affichage
 			//-------------------------------------------------------------------------------------
@@ -61,17 +60,23 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Supprimer les articles
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnSuppArticle_Click(object sender, EventArgs e)
 			{
 			if (LstViewArticles.SelectedItems.Count != 0)
 				{
-				// Initializes the variables to pass to the MessageBox.Show method.
 				string Message = "Supprimer " + LstViewArticles.SelectedItems.Count + " articles sélectionés ?";
-				// Displays the MessageBox.
 				DialogResult result = MessageBox.Show(Message, "Attention", MessageBoxButtons.OKCancel);
 
 				if (result == DialogResult.OK)
 					{
+					//-------------------------------------------------------------------------------------
+					// Supprimer les items sélectionés
+					//-------------------------------------------------------------------------------------
 					foreach (ListViewItem Item in LstViewArticles.SelectedItems)
 						{
 						// supprimer les articles sélectionés dans ListView
@@ -85,6 +90,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Ajouter un article
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAjouterArticle_Click(object sender, EventArgs e)
 			{
 			FormUnArticle UnArticle = new FormUnArticle(LstViewArticles, Service);
@@ -92,6 +102,11 @@ namespace MercureWin
 			UnArticle.ShowDialog();
 			}
 
+		/// <summary>
+		/// Modifier l'article sélectionné
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnModifierArticle_Click(object sender, EventArgs e)
 			{
 			if (LstViewArticles.SelectedItems.Count != 0)

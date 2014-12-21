@@ -17,6 +17,7 @@ namespace MercureWin
 		MercureService MyService;
 		List<string[]> Marques = new List<string[]>();
 		List<string[]> SousFammilles = new List<string[]>();
+
 		/// <summary>
 		/// Constructeur pour ajouter un article
 		/// </summary>
@@ -62,11 +63,11 @@ namespace MercureWin
 
 
 		/// <summary>
-		/// remplir les combobox Marques et SousFamilles
+		/// Remplir les combobox Marques et SousFamilles
 		/// </summary>
 		private void InitComboBox()
 			{
-			
+
 			//-------------------------------------------------------------------------------------
 			// Récupération des marques
 			//-------------------------------------------------------------------------------------
@@ -94,6 +95,11 @@ namespace MercureWin
 			this.Close();
 			}
 
+		/// <summary>
+		/// Ajouter un nouveau article
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnAjouter_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -142,7 +148,7 @@ namespace MercureWin
 						this.Close();
 						}
 					}
-				catch (Exception)
+				catch
 					{
 					MessageBox.Show("Les cases remplit non valides!", "Attention");
 					}
@@ -150,6 +156,9 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Ajouter les items dans le ListView
+		/// </summary>
 		private void ReloadArticles()
 			{
 			//-------------------------------------------------------------------------------------
@@ -166,6 +175,49 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Retourner le référence de nom marque
+		/// </summary>
+		/// <param name="NomMarque"></param>
+		/// <returns></returns>
+		/// <exception cref="WarningException">si nom marque n'existe pas</exception>
+		private int GetRefMarque(string NomMarque)
+			{
+			// trouver le référence de marque
+			foreach (string[] Marque in Marques)
+				{
+				if (Marque[1] == NomMarque)
+					{
+					return int.Parse(Marque[0]);
+					}
+				}
+			throw new WarningException("NomMarque non trouvé");
+			}
+
+		/// <summary>
+		/// Retourner le référence de sousfamille
+		/// </summary>
+		/// <param name="RefSousFamille"></param>
+		/// <returns></returns>
+		/// <exception cref="WarningException"></exception>
+		private int GetRefSousFamille(string NomSousFamille)
+			{
+			// trouver le référence de sousfamille
+			foreach (string[] SousFamille in SousFammilles)
+				{
+				if (SousFamille[2] == NomSousFamille)
+					{
+					return int.Parse(SousFamille[0]);
+					}
+				}
+			throw new WarningException("NomSousFamille non trouvé");
+			}
+
+		/// <summary>
+		/// Modifier l'article
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void BtnModifier_Click(object sender, EventArgs e)
 			{
 			// Il existe case non remplit
@@ -179,29 +231,11 @@ namespace MercureWin
 				}
 			else
 				{
-				int IdMarque = 0;
-				int IdSousFamille = 0;
 				try
 					{
-					// trouver le référence de marque
-					foreach (string[] Marque in Marques)
-						{
-						if (Marque[1] == CbBoxMarque.Text)
-							{
-							IdMarque = int.Parse(Marque[0]);
-							}
-						}
-					// trouver le référence de sousfamille
-					foreach (string[] SousFamille in SousFammilles)
-						{
-						if (SousFamille[2] == CbBoxSousFamille.Text)
-							{
-							IdSousFamille = int.Parse(SousFamille[0]);
-							}
-						}
 					// update 
-					MyService.UpdateArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, IdSousFamille,
-											IdMarque, float.Parse(TxtBoxPrix.Text));
+					MyService.UpdateArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, this.GetRefSousFamille(CbBoxSousFamille.Text),
+											this.GetRefMarque(CbBoxMarque.Text), float.Parse(TxtBoxPrix.Text));
 					//----------------------------------------
 					// modifier avec succès
 					//----------------------------------------
@@ -214,7 +248,7 @@ namespace MercureWin
 						this.Close();
 						}
 					}
-				catch (Exception)
+				catch
 					{
 					// Displays the MessageBox.
 					MessageBox.Show("Les cases remplit non valides!", "Attention");
