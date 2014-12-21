@@ -77,5 +77,81 @@ namespace MercureWin
 			UnArticle.ShowDialog();
 			}
 
+		/// <summary>
+		/// Modifier un client sélectionné
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void BtnModifierClient_Click(object sender, EventArgs e)
+			{
+			if (LstViewClients.SelectedItems.Count != 0)
+				{
+				ListViewItem Item = LstViewClients.SelectedItems[0];
+				FormUnClient UnArticle = new FormUnClient(LstViewClients, Service, int.Parse(Item.SubItems[0].Text), Item.SubItems[1].Text,
+															Item.SubItems[2].Text, Item.SubItems[3].Text,
+															Item.SubItems[4].Text, Item.SubItems[5].Text,
+															Item.SubItems[6].Text, Item.SubItems[7].Text);
+				UnArticle.Text = "Modifier Client réf: " + Item.SubItems[0].Text;
+				UnArticle.ShowDialog();
+				}
+			}
+
+		/// <summary>
+		/// Vérifier si le client est dans le table Facture
+		/// </summary>
+		/// <param name="RefClient"></param>
+		/// <returns></returns>
+		private bool IsClientUsed(int RefClient){
+		//-------------------------------------------------------------------------------------
+		// Récupération des Facture
+		//-------------------------------------------------------------------------------------
+		List<string[]> Factures = new List<string[]>();
+		Factures = Service.GetFactures();
+		foreach (string[] Datas in Factures)
+			{
+			if (int.Parse(Datas[1]) == RefClient)
+				{
+				return true;
+				}
+			}
+		return false;
+		}
+
+		/// <summary>
+		/// Supprimer un client
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void BtnSuppClient_Click(object sender, EventArgs e)
+			{
+			if (LstViewClients.SelectedItems.Count != 0)
+				{
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "Supprimer " + LstViewClients.SelectedItems.Count + " clients sélectionés ?";
+				// Displays the MessageBox.
+				DialogResult result = MessageBox.Show(Message, "Attention", MessageBoxButtons.OKCancel);
+
+				if (result == DialogResult.OK)
+					{
+					foreach (ListViewItem Item in LstViewClients.SelectedItems)
+						{
+						if (IsClientUsed(int.Parse(Item.SubItems[0].Text)))
+							{
+							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Facture.\nSupprimer facture d'abord.", "Echèc");
+							}
+						else
+							{
+							// supprimer les articles sélectionés dans ListView
+							LstViewClients.Items[Item.Index].Remove();
+							// supprimer les articles sélectionés dans la base de données
+							Service.DeleteClient(int.Parse(Item.SubItems[0].Text));
+							}
+						}
+					// refresh ListView
+					LstViewClients.Refresh();
+					}
+				}
+			}
 		}
 	}
+

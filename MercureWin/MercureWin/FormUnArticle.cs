@@ -96,86 +96,6 @@ namespace MercureWin
 			}
 
 		/// <summary>
-		/// Ajouter un nouveau article
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void BtnAjouter_Click(object sender, EventArgs e)
-			{
-			// Il existe case non remplit
-			if (this.TxtBoxDescription.Text == "" || this.TxtBoxRefArticle.Text == ""
-						|| this.TxtBoxPrix.Text == "" || this.CbBoxSousFamille.Text == "" || this.CbBoxMarque.Text == "")
-				{
-				// Initializes the variables to pass to the MessageBox.Show method.
-				string Message = "Remplissez toutes les cases vides, s'il vous plait!";
-				// Displays the MessageBox.
-				MessageBox.Show(Message, "Attention");
-				}
-			else
-				{
-				int IdMarque = 0;
-				int IdSousFamille = 0;
-				try
-					{
-					// trouver le référence de marque
-					foreach (string[] Marque in Marques)
-						{
-						if (Marque[1] == CbBoxMarque.Text)
-							{
-							IdMarque = int.Parse(Marque[0]);
-							}
-						}
-					// trouver le référence de sousfamille
-					foreach (string[] SousFamille in SousFammilles)
-						{
-						if (SousFamille[2] == CbBoxSousFamille.Text)
-							{
-							IdSousFamille = int.Parse(SousFamille[0]);
-							}
-						}
-					MyService.AddArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, IdSousFamille,
-											IdMarque, float.Parse(TxtBoxPrix.Text));
-					//----------------------------------------
-					// ajouter avec succès
-					//----------------------------------------
-					string Message = "Réussi! Ajouté un nouveau Article avec Réf: " + TxtBoxRefArticle.Text;
-					// Displays the MessageBox.
-					DialogResult Result = MessageBox.Show(Message, "Réussi");
-					if (Result == System.Windows.Forms.DialogResult.OK)
-						{
-						MyListView.Items.Clear();
-						ReloadArticles();
-						this.Close();
-						}
-					}
-				catch
-					{
-					MessageBox.Show("Les cases remplit non valides!", "Attention");
-					}
-
-				}
-			}
-
-		/// <summary>
-		/// Ajouter les items dans le ListView
-		/// </summary>
-		private void ReloadArticles()
-			{
-			//-------------------------------------------------------------------------------------
-			// Récupération des articles & Affichage
-			//-------------------------------------------------------------------------------------
-			List<string[]> Articles = new List<string[]>();
-			Articles = MyService.GetArticles();
-			foreach (string[] Datas in Articles)
-				{
-				ListViewItem Item;
-				//add items to ListView
-				Item = new ListViewItem(Datas);
-				MyListView.Items.Add(Item);
-				}
-			}
-
-		/// <summary>
 		/// Retourner le référence de nom marque
 		/// </summary>
 		/// <param name="NomMarque"></param>
@@ -211,6 +131,67 @@ namespace MercureWin
 					}
 				}
 			throw new WarningException("NomSousFamille non trouvé");
+			}
+
+		/// <summary>
+		/// Ajouter un nouveau article
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void BtnAjouter_Click(object sender, EventArgs e)
+			{
+			// Il existe case non remplit
+			if (this.TxtBoxDescription.Text == "" || this.TxtBoxRefArticle.Text == ""
+						|| this.TxtBoxPrix.Text == "" || this.CbBoxSousFamille.Text == "" || this.CbBoxMarque.Text == "")
+				{
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "Remplissez toutes les cases vides, s'il vous plait!";
+				// Displays the MessageBox.
+				MessageBox.Show(Message, "Attention");
+				}
+			else
+				{
+				try
+					{
+					MyService.AddArticle(TxtBoxRefArticle.Text, TxtBoxDescription.Text, this.GetRefSousFamille(CbBoxSousFamille.Text),
+											this.GetRefMarque(CbBoxMarque.Text), float.Parse(TxtBoxPrix.Text));
+					//----------------------------------------
+					// ajouter avec succès
+					//----------------------------------------
+					string Message = "Réussi! Ajouté un nouveau Article avec Réf: " + TxtBoxRefArticle.Text;
+					// Displays the MessageBox.
+					DialogResult Result = MessageBox.Show(Message, "Réussi");
+					if (Result == System.Windows.Forms.DialogResult.OK)
+						{
+						MyListView.Items.Clear();
+						ReloadArticles();
+						this.Close();
+						}
+					}
+				catch
+					{
+					MessageBox.Show("Les cases remplit non valides!", "Attention");
+					}
+				}
+			}
+
+		/// <summary>
+		/// Ajouter les items dans le ListView
+		/// </summary>
+		private void ReloadArticles()
+			{
+			//-------------------------------------------------------------------------------------
+			// Récupération des articles & Affichage
+			//-------------------------------------------------------------------------------------
+			List<string[]> Articles = new List<string[]>();
+			Articles = MyService.GetArticles();
+			foreach (string[] Datas in Articles)
+				{
+				ListViewItem Item;
+				//add items to ListView
+				Item = new ListViewItem(Datas);
+				MyListView.Items.Add(Item);
+				}
 			}
 
 		/// <summary>
@@ -253,9 +234,7 @@ namespace MercureWin
 					// Displays the MessageBox.
 					MessageBox.Show("Les cases remplit non valides!", "Attention");
 					}
-
 				}
-
 			}
 		}
 	}

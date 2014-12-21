@@ -39,10 +39,10 @@
 			this.sousFamillesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.statusStripMain = new System.Windows.Forms.StatusStrip();
-			this.toolStripStatusLabelMain = new System.Windows.Forms.ToolStripStatusLabel();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.statusStripMain = new System.Windows.Forms.StatusStrip();
+			this.toolStripStatusLabelMain = new System.Windows.Forms.ToolStripStatusLabel();
 			this.menuStripMain.SuspendLayout();
 			this.statusStripMain.SuspendLayout();
 			this.SuspendLayout();
@@ -133,9 +133,24 @@
 			// clientToolStripMenuItem
 			// 
 			this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
-			this.clientToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.clientToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
 			this.clientToolStripMenuItem.Text = "Clients";
 			this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aProposToolStripMenuItem});
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
+			this.toolStripMenuItem1.Text = "?";
+			// 
+			// aProposToolStripMenuItem
+			// 
+			this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
+			this.aProposToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+			this.aProposToolStripMenuItem.Text = "A propos";
+			this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
 			// 
 			// statusStripMain
 			// 
@@ -152,21 +167,6 @@
 			this.toolStripStatusLabelMain.Name = "toolStripStatusLabelMain";
 			this.toolStripStatusLabelMain.Size = new System.Drawing.Size(139, 17);
 			this.toolStripStatusLabelMain.Text = "toolStripStatusLabelMain";
-			// 
-			// toolStripMenuItem1
-			// 
-			this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aProposToolStripMenuItem});
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
-			this.toolStripMenuItem1.Text = "?";
-			// 
-			// aProposToolStripMenuItem
-			// 
-			this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-			this.aProposToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.aProposToolStripMenuItem.Text = "A propos";
-			this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
 			// 
 			// FormMain
 			// 

@@ -31,20 +31,21 @@
 			this.BtnModifier = new System.Windows.Forms.Button();
 			this.BtnAnnuler = new System.Windows.Forms.Button();
 			this.BtnAjouter = new System.Windows.Forms.Button();
-			this.TxtBoxPrix = new System.Windows.Forms.TextBox();
+			this.TxtBoxCodePostal = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.TxtBoxDescription = new System.Windows.Forms.TextBox();
+			this.TxtBoxAdresse = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.TxtBoxRefArticle = new System.Windows.Forms.TextBox();
+			this.TxtBoxNom = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.TxtBoxPrenom = new System.Windows.Forms.TextBox();
+			this.TxtBoxRaisonSocial = new System.Windows.Forms.TextBox();
+			this.TxtBoxVille = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
-			this.textBox4 = new System.Windows.Forms.TextBox();
+			this.TxtBoxPays = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
+			this.LabelRefClient = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// BtnModifier
@@ -55,6 +56,7 @@
 			this.BtnModifier.TabIndex = 25;
 			this.BtnModifier.Text = "Modifier";
 			this.BtnModifier.UseVisualStyleBackColor = true;
+			this.BtnModifier.Click += new System.EventHandler(this.BtnModifier_Click);
 			// 
 			// BtnAnnuler
 			// 
@@ -64,6 +66,7 @@
 			this.BtnAnnuler.TabIndex = 24;
 			this.BtnAnnuler.Text = "Annuler";
 			this.BtnAnnuler.UseVisualStyleBackColor = true;
+			this.BtnAnnuler.Click += new System.EventHandler(this.BtnAnnuler_Click);
 			// 
 			// BtnAjouter
 			// 
@@ -73,13 +76,14 @@
 			this.BtnAjouter.TabIndex = 23;
 			this.BtnAjouter.Text = "Ajouter";
 			this.BtnAjouter.UseVisualStyleBackColor = true;
+			this.BtnAjouter.Click += new System.EventHandler(this.BtnAjouter_Click);
 			// 
-			// TxtBoxPrix
+			// TxtBoxCodePostal
 			// 
-			this.TxtBoxPrix.Location = new System.Drawing.Point(122, 126);
-			this.TxtBoxPrix.Name = "TxtBoxPrix";
-			this.TxtBoxPrix.Size = new System.Drawing.Size(132, 20);
-			this.TxtBoxPrix.TabIndex = 22;
+			this.TxtBoxCodePostal.Location = new System.Drawing.Point(122, 126);
+			this.TxtBoxCodePostal.Name = "TxtBoxCodePostal";
+			this.TxtBoxCodePostal.Size = new System.Drawing.Size(132, 20);
+			this.TxtBoxCodePostal.TabIndex = 19;
 			// 
 			// label5
 			// 
@@ -108,12 +112,12 @@
 			this.label3.TabIndex = 19;
 			this.label3.Text = "Nom:";
 			// 
-			// TxtBoxDescription
+			// TxtBoxAdresse
 			// 
-			this.TxtBoxDescription.Location = new System.Drawing.Point(122, 87);
-			this.TxtBoxDescription.Name = "TxtBoxDescription";
-			this.TxtBoxDescription.Size = new System.Drawing.Size(474, 20);
-			this.TxtBoxDescription.TabIndex = 18;
+			this.TxtBoxAdresse.Location = new System.Drawing.Point(122, 87);
+			this.TxtBoxAdresse.Name = "TxtBoxAdresse";
+			this.TxtBoxAdresse.Size = new System.Drawing.Size(474, 20);
+			this.TxtBoxAdresse.TabIndex = 18;
 			// 
 			// label2
 			// 
@@ -124,13 +128,13 @@
 			this.label2.TabIndex = 17;
 			this.label2.Text = "Adresse:";
 			// 
-			// TxtBoxRefArticle
+			// TxtBoxNom
 			// 
-			this.TxtBoxRefArticle.Location = new System.Drawing.Point(122, 51);
-			this.TxtBoxRefArticle.MaxLength = 8;
-			this.TxtBoxRefArticle.Name = "TxtBoxRefArticle";
-			this.TxtBoxRefArticle.Size = new System.Drawing.Size(132, 20);
-			this.TxtBoxRefArticle.TabIndex = 16;
+			this.TxtBoxNom.Location = new System.Drawing.Point(122, 12);
+			this.TxtBoxNom.MaxLength = 50;
+			this.TxtBoxNom.Name = "TxtBoxNom";
+			this.TxtBoxNom.Size = new System.Drawing.Size(132, 20);
+			this.TxtBoxNom.TabIndex = 16;
 			// 
 			// label1
 			// 
@@ -141,26 +145,26 @@
 			this.label1.TabIndex = 15;
 			this.label1.Text = "RaisonSocial:";
 			// 
-			// textBox1
+			// TxtBoxPrenom
 			// 
-			this.textBox1.Location = new System.Drawing.Point(330, 12);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(132, 20);
-			this.textBox1.TabIndex = 26;
+			this.TxtBoxPrenom.Location = new System.Drawing.Point(330, 12);
+			this.TxtBoxPrenom.Name = "TxtBoxPrenom";
+			this.TxtBoxPrenom.Size = new System.Drawing.Size(132, 20);
+			this.TxtBoxPrenom.TabIndex = 17;
 			// 
-			// textBox2
+			// TxtBoxRaisonSocial
 			// 
-			this.textBox2.Location = new System.Drawing.Point(122, 12);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(132, 20);
-			this.textBox2.TabIndex = 27;
+			this.TxtBoxRaisonSocial.Location = new System.Drawing.Point(122, 47);
+			this.TxtBoxRaisonSocial.Name = "TxtBoxRaisonSocial";
+			this.TxtBoxRaisonSocial.Size = new System.Drawing.Size(132, 20);
+			this.TxtBoxRaisonSocial.TabIndex = 17;
 			// 
-			// textBox3
+			// TxtBoxVille
 			// 
-			this.textBox3.Location = new System.Drawing.Point(330, 126);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(132, 20);
-			this.textBox3.TabIndex = 29;
+			this.TxtBoxVille.Location = new System.Drawing.Point(330, 126);
+			this.TxtBoxVille.Name = "TxtBoxVille";
+			this.TxtBoxVille.Size = new System.Drawing.Size(132, 20);
+			this.TxtBoxVille.TabIndex = 20;
 			// 
 			// label6
 			// 
@@ -171,12 +175,12 @@
 			this.label6.TabIndex = 28;
 			this.label6.Text = "Ville:";
 			// 
-			// textBox4
+			// TxtBoxPays
 			// 
-			this.textBox4.Location = new System.Drawing.Point(122, 163);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(132, 20);
-			this.textBox4.TabIndex = 31;
+			this.TxtBoxPays.Location = new System.Drawing.Point(122, 163);
+			this.TxtBoxPays.Name = "TxtBoxPays";
+			this.TxtBoxPays.Size = new System.Drawing.Size(132, 20);
+			this.TxtBoxPays.TabIndex = 21;
 			// 
 			// label7
 			// 
@@ -187,27 +191,37 @@
 			this.label7.TabIndex = 30;
 			this.label7.Text = "Pays:";
 			// 
+			// LabelRefClient
+			// 
+			this.LabelRefClient.AutoSize = true;
+			this.LabelRefClient.Location = new System.Drawing.Point(495, 15);
+			this.LabelRefClient.Name = "LabelRefClient";
+			this.LabelRefClient.Size = new System.Drawing.Size(45, 13);
+			this.LabelRefClient.TabIndex = 32;
+			this.LabelRefClient.Text = "refClient";
+			// 
 			// FormUnClient
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(644, 205);
-			this.Controls.Add(this.textBox4);
+			this.Controls.Add(this.LabelRefClient);
+			this.Controls.Add(this.TxtBoxPays);
 			this.Controls.Add(this.label7);
-			this.Controls.Add(this.textBox3);
+			this.Controls.Add(this.TxtBoxVille);
 			this.Controls.Add(this.label6);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.TxtBoxRaisonSocial);
+			this.Controls.Add(this.TxtBoxPrenom);
 			this.Controls.Add(this.BtnModifier);
 			this.Controls.Add(this.BtnAnnuler);
 			this.Controls.Add(this.BtnAjouter);
-			this.Controls.Add(this.TxtBoxPrix);
+			this.Controls.Add(this.TxtBoxCodePostal);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
-			this.Controls.Add(this.TxtBoxDescription);
+			this.Controls.Add(this.TxtBoxAdresse);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.TxtBoxRefArticle);
+			this.Controls.Add(this.TxtBoxNom);
 			this.Controls.Add(this.label1);
 			this.Name = "FormUnClient";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -222,19 +236,20 @@
 		private System.Windows.Forms.Button BtnModifier;
 		private System.Windows.Forms.Button BtnAnnuler;
 		private System.Windows.Forms.Button BtnAjouter;
-		private System.Windows.Forms.TextBox TxtBoxPrix;
+		private System.Windows.Forms.TextBox TxtBoxCodePostal;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox TxtBoxDescription;
+		private System.Windows.Forms.TextBox TxtBoxAdresse;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox TxtBoxRefArticle;
+		private System.Windows.Forms.TextBox TxtBoxNom;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox TxtBoxPrenom;
+		private System.Windows.Forms.TextBox TxtBoxRaisonSocial;
+		private System.Windows.Forms.TextBox TxtBoxVille;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox textBox4;
+		private System.Windows.Forms.TextBox TxtBoxPays;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label LabelRefClient;
 		}
 	}

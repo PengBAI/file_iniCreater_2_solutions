@@ -74,6 +74,7 @@
 			this.BtnSuppClient.TabIndex = 1;
 			this.BtnSuppClient.Text = "Supprimer";
 			this.BtnSuppClient.UseVisualStyleBackColor = true;
+			this.BtnSuppClient.Click += new System.EventHandler(this.BtnSuppClient_Click);
 			// 
 			// BtnModifierClient
 			// 
@@ -83,6 +84,7 @@
 			this.BtnModifierClient.TabIndex = 3;
 			this.BtnModifierClient.Text = "Modifier";
 			this.BtnModifierClient.UseVisualStyleBackColor = true;
+			this.BtnModifierClient.Click += new System.EventHandler(this.BtnModifierClient_Click);
 			// 
 			// FormClients
 			// 
