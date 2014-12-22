@@ -13,7 +13,7 @@ namespace MercureWin
 	public partial class FormMarques : Form
 		{
 		MercureService Service;
-		
+
 		public FormMarques(string MyURL)
 			{
 			InitializeComponent();
@@ -142,14 +142,21 @@ namespace MercureWin
 						{
 						if (IsMarqueUsed(int.Parse(Item.SubItems[0].Text)))
 							{
-							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Articles.\nSupprimer l'article d'abord.","Echèc");
+							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Articles.\nSupprimer l'article d'abord.", "Echèc");
 							}
 						else
 							{
-							// supprimer les articles sélectionés dans ListView
-							LsvMarques.Items[Item.Index].Remove();
-							// supprimer les articles sélectionés dans la base de données
-							Service.DeleteMarque(int.Parse(Item.SubItems[0].Text));
+							try
+								{
+								// supprimer les marques sélectionés dans la base de données
+								Service.DeleteMarque(int.Parse(Item.SubItems[0].Text));
+								// supprimer les marques sélectionés dans ListView
+								LsvMarques.Items[Item.Index].Remove();
+								}
+							catch
+								{
+								MessageBox.Show("Erreur détéctée! Echèc à supprimer", "Ehcèc");
+								}
 							}
 						}
 					TxtBoxModifierNom.Text = "";

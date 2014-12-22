@@ -38,9 +38,9 @@
 			// 
 			// LstViewArticles
 			// 
-			this.LstViewArticles.Location = new System.Drawing.Point(12, 12);
+			this.LstViewArticles.Location = new System.Drawing.Point(12, 61);
 			this.LstViewArticles.Name = "LstViewArticles";
-			this.LstViewArticles.Size = new System.Drawing.Size(970, 488);
+			this.LstViewArticles.Size = new System.Drawing.Size(1010, 539);
 			this.LstViewArticles.TabIndex = 0;
 			this.LstViewArticles.UseCompatibleStateImageBehavior = false;
 			// 
@@ -79,7 +79,7 @@
 			this.groupBox1.Controls.Add(this.BtnAjouterArticle);
 			this.groupBox1.Controls.Add(this.BtnSuppArticle);
 			this.groupBox1.Controls.Add(this.BtnModifierArticle);
-			this.groupBox1.Location = new System.Drawing.Point(612, 506);
+			this.groupBox1.Location = new System.Drawing.Point(497, 4);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(370, 51);
 			this.groupBox1.TabIndex = 4;
@@ -89,7 +89,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(994, 562);
+			this.ClientSize = new System.Drawing.Size(1034, 612);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.LstViewArticles);
 			this.Name = "FormArticles";

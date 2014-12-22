@@ -80,6 +80,18 @@
     <Compile Include="FormClients.Designer.cs">
       <DependentUpon>FormClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFactureArticles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactureArticles.Designer.cs">
+      <DependentUpon>FormFactureArticles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFactures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactures.Designer.cs">
+      <DependentUpon>FormFactures.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFamilles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFactureArticles.resx">
+      <DependentUpon>FormFactureArticles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFactures.resx">
+      <DependentUpon>FormFactures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFamilles.resx">
       <DependentUpon>FormFamilles.cs</DependentUpon>

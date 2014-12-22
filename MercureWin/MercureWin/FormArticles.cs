@@ -79,10 +79,17 @@ namespace MercureWin
 					//-------------------------------------------------------------------------------------
 					foreach (ListViewItem Item in LstViewArticles.SelectedItems)
 						{
-						// supprimer les articles sélectionés dans ListView
-						LstViewArticles.Items[Item.Index].Remove();
-						// supprimer les articles sélectionés dans la base de données
-						Service.DeleteArticle(Item.SubItems[0].Text);
+						try
+							{
+							// supprimer les articles sélectionés dans la base de données
+							Service.DeleteArticle(Item.SubItems[0].Text);
+							// supprimer les articles sélectionés dans ListView
+							LstViewArticles.Items[Item.Index].Remove();
+							}
+						catch
+							{
+							MessageBox.Show("Erreur détéctée! Echèc à supprimer", "Ehcèc");
+							}
 						}
 					// refresh ListView
 					LstViewArticles.Refresh();

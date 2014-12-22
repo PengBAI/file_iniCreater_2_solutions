@@ -38,9 +38,9 @@
 			// 
 			// LstViewClients
 			// 
-			this.LstViewClients.Location = new System.Drawing.Point(12, 12);
+			this.LstViewClients.Location = new System.Drawing.Point(12, 57);
 			this.LstViewClients.Name = "LstViewClients";
-			this.LstViewClients.Size = new System.Drawing.Size(970, 488);
+			this.LstViewClients.Size = new System.Drawing.Size(1010, 543);
 			this.LstViewClients.TabIndex = 1;
 			this.LstViewClients.UseCompatibleStateImageBehavior = false;
 			this.LstViewClients.View = System.Windows.Forms.View.Details;
@@ -50,7 +50,7 @@
 			this.groupBox1.Controls.Add(this.BtnAjouterClient);
 			this.groupBox1.Controls.Add(this.BtnSuppClient);
 			this.groupBox1.Controls.Add(this.BtnModifierClient);
-			this.groupBox1.Location = new System.Drawing.Point(612, 506);
+			this.groupBox1.Location = new System.Drawing.Point(494, 0);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(370, 51);
 			this.groupBox1.TabIndex = 5;
@@ -90,7 +90,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(994, 562);
+			this.ClientSize = new System.Drawing.Size(1034, 612);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.LstViewClients);
 			this.Name = "FormClients";

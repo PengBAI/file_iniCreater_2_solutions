@@ -39,6 +39,7 @@
 			this.sousFamillesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.facturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusStripMain = new System.Windows.Forms.StatusStrip();
@@ -125,7 +126,8 @@
 			// gestionToolStripMenuItem
 			// 
 			this.gestionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientToolStripMenuItem});
+            this.clientToolStripMenuItem,
+            this.facturesToolStripMenuItem});
 			this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
 			this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
 			this.gestionToolStripMenuItem.Text = "Gestion";
@@ -133,9 +135,16 @@
 			// clientToolStripMenuItem
 			// 
 			this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
-			this.clientToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+			this.clientToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.clientToolStripMenuItem.Text = "Clients";
 			this.clientToolStripMenuItem.Click += new System.EventHandler(this.clientToolStripMenuItem_Click);
+			// 
+			// facturesToolStripMenuItem
+			// 
+			this.facturesToolStripMenuItem.Name = "facturesToolStripMenuItem";
+			this.facturesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.facturesToolStripMenuItem.Text = "Factures";
+			this.facturesToolStripMenuItem.Click += new System.EventHandler(this.facturesToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -207,6 +216,7 @@
 		private System.Windows.Forms.ToolStripMenuItem clientToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem aProposToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem facturesToolStripMenuItem;
 		}
 	}
 

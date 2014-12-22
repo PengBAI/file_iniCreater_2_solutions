@@ -58,6 +58,7 @@ namespace MercureWin
 				CbBoxModifier.Items.Add(Famille[1]);
 				}
 			}
+
 		/// <summary>
 		/// Retourner le nom de famille
 		/// </summary>
@@ -194,7 +195,7 @@ namespace MercureWin
 						{
 						LsvSousFamilles.Items.Clear();
 						ShowSousFamilles();
-						CbBoxModifier.Text ="";
+						CbBoxModifier.Text = "";
 						TxtBoxModifierNom.Text = "";
 						LabelRefSousFamille.Text = "";
 						}
@@ -207,6 +208,11 @@ namespace MercureWin
 				}
 			}
 
+		/// <summary>
+		/// Remplir les cases de modification
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void LsvSousFamilles_SelectedIndexChanged(object sender, EventArgs e)
 			{
 			if (LsvSousFamilles.SelectedItems.Count == 1)
@@ -263,10 +269,17 @@ namespace MercureWin
 							}
 						else
 							{
-							// supprimer les articles sélectionés dans ListView
-							LsvSousFamilles.Items[Item.Index].Remove();
-							// supprimer les articles sélectionés dans la base de données
-							Service.DeleteSousFamille(int.Parse(Item.SubItems[0].Text));
+							try
+								{
+								// supprimer les articles sélectionés dans la base de données
+								Service.DeleteSousFamille(int.Parse(Item.SubItems[0].Text));
+								// supprimer les articles sélectionés dans ListView
+								LsvSousFamilles.Items[Item.Index].Remove();
+								}
+							catch
+								{
+								MessageBox.Show("Erreur détectée! Echèc à supprimer!", "Echèc");
+								}
 							}
 						}
 					TxtBoxModifierNom.Text = "";

@@ -101,21 +101,22 @@ namespace MercureWin
 		/// </summary>
 		/// <param name="RefClient"></param>
 		/// <returns></returns>
-		private bool IsClientUsed(int RefClient){
-		//-------------------------------------------------------------------------------------
-		// Récupération des Facture
-		//-------------------------------------------------------------------------------------
-		List<string[]> Factures = new List<string[]>();
-		Factures = Service.GetFactures();
-		foreach (string[] Datas in Factures)
+		private bool IsClientUsed(int RefClient)
 			{
-			if (int.Parse(Datas[1]) == RefClient)
+			//-------------------------------------------------------------------------------------
+			// Récupération des Facture
+			//-------------------------------------------------------------------------------------
+			List<string[]> Factures = new List<string[]>();
+			Factures = Service.GetFactures();
+			foreach (string[] Datas in Factures)
 				{
-				return true;
+				if (int.Parse(Datas[1]) == RefClient)
+					{
+					return true;
+					}
 				}
+			return false;
 			}
-		return false;
-		}
 
 		/// <summary>
 		/// Supprimer un client
@@ -137,7 +138,7 @@ namespace MercureWin
 						{
 						if (IsClientUsed(int.Parse(Item.SubItems[0].Text)))
 							{
-							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans Facture.\nSupprimer facture d'abord.", "Echèc");
+							MessageBox.Show("Réf: " + Item.SubItems[0].Text + " est utilisé dans Facture.\nSupprimer facture d'abord.", "Echèc");
 							}
 						else
 							{

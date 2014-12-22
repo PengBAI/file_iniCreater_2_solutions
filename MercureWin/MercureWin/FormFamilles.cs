@@ -13,7 +13,7 @@ namespace MercureWin
 	public partial class FormFamilles : Form
 		{
 		MercureService Service;
-		
+
 		public FormFamilles(string MyURL)
 			{
 			InitializeComponent();
@@ -140,14 +140,22 @@ namespace MercureWin
 						{
 						if (IsMarqueUsed(int.Parse(Item.SubItems[0].Text)))
 							{
-							MessageBox.Show(Item.SubItems[1].Text + " est utilisé dans SouFamilles.\nSupprimer la sousfamille d'abord.", "Echèc");
+							MessageBox.Show(Item.SubItems[0].Text + " est utilisé dans SouFamilles.\nSupprimer la sousfamille d'abord.", "Echèc");
 							}
 						else
 							{
-							// supprimer les articles sélectionés dans ListView
-							LsvFamilles.Items[Item.Index].Remove();
-							// supprimer les articles sélectionés dans la base de données
-							Service.DeleteFamille(int.Parse(Item.SubItems[0].Text));
+							try
+								{
+								// supprimer les familles sélectionés dans la base de données
+								Service.DeleteFamille(int.Parse(Item.SubItems[0].Text));
+								// supprimer les familles sélectionés dans ListView
+								LsvFamilles.Items[Item.Index].Remove();
+								}
+							catch
+								{
+								MessageBox.Show("Erreur détéctée! Echèc à supprimer", "Ehcèc");
+								}
+
 							}
 						}
 					TxtBoxModifierNom.Text = "";

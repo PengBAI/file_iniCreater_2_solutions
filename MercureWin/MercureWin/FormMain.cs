@@ -140,12 +140,10 @@ namespace MercureWin
 			{
 			if (this.toolStripStatusLabelMain.Text != "")
 				{
-
 				FormClients MDIChild = new FormClients(this.toolStripStatusLabelMain.Text);
 				MDIChild.MdiParent = this;
 				MDIChild.WindowState = FormWindowState.Maximized;
 				MDIChild.Show();
-
 				}
 			else
 				{
@@ -154,7 +152,6 @@ namespace MercureWin
 				// Displays the MessageBox.
 				MessageBox.Show(Message, "Erreur URL");
 				}
-
 			}
 
 		/// <summary>
@@ -166,6 +163,24 @@ namespace MercureWin
 			{
 			FormAPropos APropos = new FormAPropos();
 			APropos.ShowDialog();
+			}
+
+		private void facturesToolStripMenuItem_Click(object sender, EventArgs e)
+			{
+			if (this.toolStripStatusLabelMain.Text != "")
+				{
+				FormFactures MDIChild = new FormFactures(this.toolStripStatusLabelMain.Text);
+				MDIChild.MdiParent = this;
+				MDIChild.WindowState = FormWindowState.Maximized;
+				MDIChild.Show();
+				}
+			else
+				{
+				// Initializes the variables to pass to the MessageBox.Show method.
+				string Message = "URL invalide! Ajouter d'abord un URL!";
+				// Displays the MessageBox.
+				MessageBox.Show(Message, "Erreur URL");
+				}
 			}
 		}
 	}
